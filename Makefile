@@ -18,3 +18,6 @@ good:1.o 2.o myProject.h
 
 clean:
 	rm -f *.o
+	rm -f *.so
+	rm -f *.elf
+
