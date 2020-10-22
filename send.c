@@ -6,7 +6,7 @@
 #include <sys/msg.h>
 
 int main(void)
-{	
+{	//여긴 어딘가. 나는 누구인가. github 신기하네
 	int shmid = shmget((key_t)1234, 1024, IPC_CREAT|0666);
 	if(shmid ==-1)	//만약 에러가 났다면
 	{
