@@ -4,7 +4,7 @@
 int main(void)
 {
 	printf("chief name is lee진우\n");
-	printMyName1();
-	printMyName2();
+	PrintMyName1();
+	PrintMyName2();
 }
 

@@ -8,7 +8,7 @@ main.o:main.c myProject.h
 
 
 good:1.o 2.o myProject.h
-	gcc -o libgood.so $(CFLAGS) 1.o 2.o
+	gcc -o libgood.so -shared -fPIC 1.o 2.o
 
 1.o:1.c myProject.h
 	gcc -o 1.o $(CFLAGS) -c 1.c
