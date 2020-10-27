@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdlib.h>
 #include "myProject.h"
 
 int main(void)
 {
-	printf("chief name is lee진우\n");
-	PrintMyName1();
-	PrintMyName2();
+	//item();
+	//itemp();
+	power();
 }
-
