@@ -15,6 +15,7 @@ int item(void)
 		printf("file open error!\n");
 		exit(1);
 	}
+	printf("착용 장비 : ");
 	while(nread=read(fditem,buf,1)>0){
       printf("%s",buf);
       lseek(fditem,(off_t)0,SEEK_CUR);

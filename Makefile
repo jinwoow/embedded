@@ -1,13 +1,13 @@
 main.elf:main.o good
-	gcc main.o -l good -L. -o main.elf
+	gcc main.o -l good -L. -o main.elf -lpthread
 
 CFLAGS= -shared -fPIC
 
 main.o:main.c myProject.h
 	gcc -c -o main.o main.c
 
-good:1.o 2.o item.o power.o itemp.o myProject.h
-	gcc -o libgood.so -shared -fPIC 1.o 2.o item.o power.o itemp.o
+good:1.o 2.o item.o power.o itemp.o itemup.o myProject.h
+	gcc -o libgood.so -shared -fPIC 1.o 2.o item.o power.o itemp.o itemup.o
 
 1.o:1.c myProject.h
 	gcc -o 1.o $(CFLAGS) -c 1.c
@@ -24,6 +24,8 @@ power.o:readpower.c myProject.h
 itemp.o:readitemp.c myProject.h
 	gcc -o itemp.o $(CFLAGS) -c readitemp.c
 
+itemup.o:itemup.c myProject.h
+	gcc -o itemup.o $(CFLAGS) -c itemup.c
 
 clean:
 	rm -f *.o
