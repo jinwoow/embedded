@@ -8,7 +8,7 @@
 int main()
 {
 	ledLibInit();
-	ledOnOff(0,0);
 	ledStatus();
+	sleep(2);
 	ledLibExit();
 }

@@ -11,8 +11,13 @@ int ledOnOff(int ledNum, int onOff){
 	write(fd,&ledValue,4);
 }
 
-int ledStatus (void){
-	ledOnOff(2,2);
+int ledStatus(void){
+	//ledOnOff(2.2);
+	unsigned int data = 0;
+	char *a=0xff;
+	data=strtol(&a,0,16);
+	printf("wrate data :0x%X\n", data);
+	write(fd,&data,4);
 }
 
 int ledLibInit(void){
