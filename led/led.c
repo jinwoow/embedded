@@ -1,10 +1,12 @@
 #include "led.h"
 #include <fcntl.h>
+#include <stdio.h>
 static unsigned int ledValue=0;
 static int fd=0;
 
-int ledOnOff(int ledNum, int onOff){
-	int i=7;
+int ledOnOff(int ledNum, int onOff)
+{
+	int i=1;
 	i = i<<ledNum;
 	ledValue=ledValue&(~i);
 	if(onOff !=0)ledValue|=i;
@@ -12,7 +14,7 @@ int ledOnOff(int ledNum, int onOff){
 }
 
 int ledStatus(void){
-	ledOnOff(1.1);
+	ledOnOff(6,1);
 }
 
 int ledLibInit(void){
