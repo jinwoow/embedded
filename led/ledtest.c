@@ -9,6 +9,6 @@ int main()
 {
 	ledLibInit();
 	ledStatus();
-	sleep(2);
+	sleep(3);
 	ledLibExit();
 }
