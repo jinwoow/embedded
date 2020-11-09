@@ -12,7 +12,7 @@ int ledOnOff(int ledNum, int onOff){
 }
 
 int ledStatus (void){
-	ledOnOff(2.2);
+	ledOnOff(2,2);
 }
 
 int ledLibInit(void){
