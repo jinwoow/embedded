@@ -15,30 +15,29 @@
 #define PROBE_FILE "proc/bus/input/devices"
 #define HAVE_TO_FIND_1 "N:NAME=\"ecube-button\"\n"
 #define HAVE_TO_FIND_2 "H:Handlers =kbd event"
-
-
-#define MUTEX_ENABLE 0
 #define INPUT_DEVICE_LIST "dev/input/event"
 #define PROBE_FILE "/proc/bus/input/devices"
-
+#define MUTEX_ENABLE 0
 pthread_t buttonTH_id;
 pthread_mutex_t lockinput;
-struct input_event stEvent;
+
 void *dosomething(void *arg)
 {
   	pthread_mutex_lock(&lockinput);
-	char inputDevPath[200]={0,};
+  	struct input_event stEvent;
+  	BUTTON_MSG_T TxData;
 	int fp;
-
 	while(1){
-	int readsize;
 	int returnValue =0;
-	readsize = read(fp, &stEvent, sizeof(stEvent));
+	int readsize = read(fp, &stEvent, sizeof(stEvent));
 	if( stEvent.type == EV_KEY)
 	{
-    	msgsnd(MESSAGE_ID, &stEvent,sizeof(stEvent.code),0);
-	printf("EV_KEY()");
-	switch(stEvent.code)
+		int msgID= msgget((key_t)MESSAGE_ID,IPC_CREAT|0666);
+		TxData.keyinput=stEvent.code;
+		TxData.pressed=stEvent.value;
+    	msgsnd(msgID, &TxData,8,0);
+    	printf("EV_KEY()");
+	    switch(stEvent.code)
 		{
 		case KEY_VOLUMEUP: printf("volume up key):"); break;
 		case KEY_HOME: printf("home key):"); break;
@@ -51,9 +50,8 @@ void *dosomething(void *arg)
 	else printf("released\n");
 	}
 	pthread_mutex_unlock(&lockinput);
-	}
 	close(fp);
-
+}
 }
 
 int probeButtonPath(char *newPath){
@@ -82,23 +80,28 @@ int probeButtonPath(char *newPath){
 			return returnValue;
 			}
 }
+
 int buttonInit(void)
 {
-  int fp;
-  int fd;
-  int err;
-  int readSize, inputIndex;
-  char inputDevPath[200]={0,};
-if( probeButtonPath(inputDevPath) ==0)
-{
-printf("error\r\n");
-printf("did you insmod?\r\n");
-return 0;
-}
+    int fp;
+    int fd;
+    int readSize, inputIndex;
+    char inputDevPath[200]={0,};
+    if( probeButtonPath(inputDevPath) ==0)
+    {
+        printf("error\r\n");
+        printf("did you insmod?\r\n");
+        return 0;
+    }//경로 찾기
 	fp = open(inputDevPath,O_RDONLY);
-	int msgID= msgget(MESSAGE_ID,IPC_CREAT|0666);
-	err=pthread_create(&buttonTH_id, NULL, &dosomething,NULL);
+	pthread_create(&buttonTH_id, NULL,&dosomething,NULL);
 	return 1;
-	}
-//int buttonExit(void)
-//{        };
+}
+
+int buttonstatus(void){
+
+}
+
+int buttonExit(void){
+	pthread_join(buttonTH_id,NULL);
+}
