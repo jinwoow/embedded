@@ -33,7 +33,9 @@ void *dosomething(void *arg)
 	if( stEvent.type == EV_KEY)
 	{
 		int msgID= msgget((key_t)MESSAGE_ID,IPC_CREAT|0666);
-    	msgsnd(msgID, &TxData,sizeof(TxData.keyinput),0);
+		TxData.keyinput=stEvent.code;
+		TxData.pressed=stEvent.value;
+    	msgsnd(msgID, &TxData,8,0);
     	printf("EV_KEY()");
 	    switch(stEvent.code)
 		{
