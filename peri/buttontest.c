@@ -28,10 +28,8 @@ int main(int argc, char *argv[])
 	    int returnValue =0;
 	    int msgID= msgget((key_t)MESSAGE_ID,IPC_CREAT|0666);
     	returnValue= msgrcv(msgID,&RxData,sizeof(RxData.keyinput),0,IPC_NOWAIT);
-    	if(returnValue==-1){
-			break;
+    	if(returnValue){
+			buttonInit();
 		}
-		else{
-	}
 	}
 }
