@@ -64,6 +64,7 @@ void setFrequency(int frequency)//주파수 입력하
 int buzzerInit(void){
    findBuzzerSysPath();
 }
+
 int buzzerPlatSong(int scale){
        if (scale > MAX_SCALE_STEP )
     {
@@ -71,12 +72,21 @@ int buzzerPlatSong(int scale){
         doHelp();
         return 1;
     }
+    if(scale==0){
+		buzzerEnable(0);
+	}
+	else
+	{
     setFrequency(musicScale[scale-1]);
     buzzerEnable(1);
 }
-int buzzerStopSong(void){
-   buzzerEnable(0);
+return 0;
 }
+
+int buzzerStopSong(void){
+   buzzerPlatSong(0);
+}
+
 int buzzerExit(void){
-   closedir(BUZZER_BASE_SYS_PATH);
+   //closedir(BUZZER_BASE_SYS_PATH);
 }
