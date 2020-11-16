@@ -5,4 +5,4 @@ int buzzerInit(void);
 int buzzerPlaySong(int scale);
 int buzzerStopSong(void);
 int buzzerExit(void);
-#endif
+#endif _BUZZER_H_

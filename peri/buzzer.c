@@ -4,6 +4,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <dirent.h>
+#include "buzzer.h"
 #define MAX_SCALE_STEP 8
 #define BUZZER_BASE_SYS_PATH "/sys/bus/platform/devices/"
 #define BUZZER_FILENAME "peribuzzer"
@@ -59,32 +60,23 @@ void setFrequency(int frequency)//주파수 입력하
     dprintf(fd, "%d", frequency);
     close(fd);
 }
-int main(int argc , char **argv)
-{
-    int freIndex;
-    if (argc < 2 || findBuzzerSysPath() )
-    {
-        printf("Error!\n");
-        doHelp();
-        return 1;
-    }
-    freIndex = atoi(argv[1]);//주파수 입
-    printf("freIndex :%d \n",freIndex);
 
-    if ( freIndex > MAX_SCALE_STEP )
+int buzzerInit(void){
+   findBuzzerSysPath();
+}
+int buzzerPlatSong(int scale){
+       if (scale > MAX_SCALE_STEP )
     {
         printf(" <buzzerNo> over range \n");
         doHelp();
         return 1;
     }
-    if ( freIndex == 0)// disable
-    {
-        buzzerEnable(0);
-    }
-    else
-    {
-        setFrequency(musicScale[freIndex-1]);
-        buzzerEnable(1);
-    }
-    return 0;
+    setFrequency(musicScale[scale-1]);
+    buzzerEnable(1);
+}
+int buzzerStopSong(void){
+   buzzerEnable(0);
+}
+int buzzerExit(void){
+   closedir(BUZZER_BASE_SYS_PATH);
 }
