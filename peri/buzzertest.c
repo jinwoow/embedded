@@ -12,7 +12,7 @@
 
 int main(void){
    buzzerInit();
-   buzzerPlatSong(1);
+   buzzerPlatSong(10);
    sleep(1);
    buzzerStopSong();
    buzzerExit();
