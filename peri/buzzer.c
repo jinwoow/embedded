@@ -78,7 +78,7 @@ int buzzerPlatSong(int scale){
 }
 
 int buzzerStopSong(void){
-   buzzerPlatSong(0);
+   buzzerEnable(0);
 }
 
 int buzzerExit(void){
