@@ -72,15 +72,9 @@ int buzzerPlatSong(int scale){
         doHelp();
         return 1;
     }
-    if(scale==0){
-		buzzerEnable(0);
-	}
-	else
-	{
     setFrequency(musicScale[scale-1]);
     buzzerEnable(1);
-}
-return 0;
+    return 0;
 }
 
 int buzzerStopSong(void){
@@ -88,5 +82,5 @@ int buzzerStopSong(void){
 }
 
 int buzzerExit(void){
-   //closedir(BUZZER_BASE_SYS_PATH);
+   closedir(BUZZER_BASE_SYS_PATH);
 }

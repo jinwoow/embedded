@@ -12,8 +12,8 @@
 
 int main(void){
    buzzerInit();
-   buzzerPlatSong(10);
-   sleep(1);
-   buzzerStopSong();
+   buzzerPlatSong(5);
+   //sleep(1);
+   //buzzerStopSong();
    buzzerExit();
 }
