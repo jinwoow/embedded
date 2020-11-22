@@ -7,12 +7,14 @@
 #include "textlcddrv.h"
 #define TEXTLCD_DRIVER_NAME "/dev/peritextlcd"
 
-int textlcd(char line,char text)
+unsigned int linenum = 0;
+stTextLCD stlcd; // stTextLCD 구조체를 가지고 드라이버와 인터페이스
+int fd;
+int len;
+
+
+void textlcdline(char line)
 {
-	unsigned int linenum = 0;
-	stTextLCD stlcd; // stTextLCD 구조체를 가지고 드라이버와 인터페이스
-	int fd;
-	int len;
 	memset(&stlcd,0,sizeof(stTextLCD)); // 구조체 초기화
 	linenum = strtol(line,NULL,10);
 	printf("linenum :%d\n", linenum);
@@ -24,8 +26,11 @@ int textlcd(char line,char text)
 		printf("linenum : %d wrong . range (1 ~ 2)\n", linenum);
 	return 1;
 	}
+}
+
+void textlcdtext(char text){
 	len = strlen(text);
-	if ( len > COLUMN_NUM)
+	if (len > COLUMN_NUM)
 	memcpy(stlcd.TextData[stlcd.cmdData - 1], text, COLUMN_NUM);
 	else
 	memcpy(stlcd.TextData[stlcd.cmdData - 1], text, len);
