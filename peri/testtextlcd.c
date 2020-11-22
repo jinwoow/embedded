@@ -7,5 +7,7 @@
 
 int main(){
 	textlcdline(1);
-	textlcdtext('hello');
+	textlcdtext("hello");
+	
+	
 }

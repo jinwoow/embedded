@@ -13,8 +13,7 @@ stTextLCD stlcd; // stTextLCD 구조체를 가지고 드라이버와 인터페�
 int fd;
 int len;
 
-
-int textlcdline(char line)
+void textlcdline(char line)
 {
 	printf("i dont no");
 	memset(&stlcd,0,sizeof(stTextLCD)); // 구조체 초기화
@@ -30,7 +29,7 @@ int textlcdline(char line)
 	}
 }
 
-int textlcdtext(char text){
+void textlcdtext(char text){
 	printf("i dont no!!");
 	len = strlen(text);
 	if (len > COLUMN_NUM)
@@ -47,3 +46,5 @@ int textlcdtext(char text){
 	close(fd);
 	return 0;
 }
+
+

@@ -1,5 +1,5 @@
-#ifndef __TEXTLCDDRV_H__
-#define __TEXTLCDDRV_H__
+#ifndef __TEXTLCD_DRV_H__
+#define __TEXTLCD_DRV_H__
 #define LINE_NUM 2
 #define COLUMN_NUM 16
 
@@ -37,3 +37,5 @@ char TextData[LINE_NUM][LINE_BUFF_NUM];
 }stTextLCD,*pStTextLCD;
 
 #endif
+
+
