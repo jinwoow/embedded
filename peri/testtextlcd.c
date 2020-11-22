@@ -4,6 +4,7 @@
 #include <linux/input.h>
 #include <unistd.h> // for open/close
 #include <fcntl.h>
+#include "textlcddrv.h"
 
 int main(){
 	printf("what");
