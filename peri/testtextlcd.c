@@ -5,8 +5,12 @@
 #include <unistd.h> // for open/close
 #include <fcntl.h>
 
-
+int main(){
+	textlcd(1,'hello');
+}
+/*
 int main(){
 	textlcdline(1);
 	textlcdtext('hello');
 }
+*/
