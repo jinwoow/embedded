@@ -7,41 +7,44 @@
 #include "textlcddrv.h"
 #define TEXTLCD_DRIVER_NAME "/dev/peritextlcd"
 
-int textlcd(int argc,char **argv)
+int textlcd(char line, char text)
 {
+	char lined=1;
+	char textd="hello";
 	printf("WOW\r\n");
-	printf("%s %s\r\n",argv[0],argv[1]);
-unsigned int linenum = 0;
-stTextLCD stlcd; // stTextLCD 구조체를 가지고 드라이버와 인터페이스
-int fd;
-int len;
-memset(&stlcd,0,sizeof(stTextLCD)); // 구조체 초기화
-if (argc < 3 ) { // line 정보와 쓸 정보를 확인
-perror(" Args number is less than 2\n");
-return 1;
-}
-linenum = strtol(argv[1],NULL,10);
-printf("linenum :%d\n", linenum);
-if ( linenum == 1)
-stlcd.cmdData = CMD_DATA_WRITE_LINE_1;
-else if ( linenum == 2)
-stlcd.cmdData = CMD_DATA_WRITE_LINE_2;
-else {
-printf("linenum : %d wrong . range (1 ~ 2)\n", linenum);
-return 1; }
-len = strlen(argv[2]);
-if ( len > COLUMN_NUM)
-memcpy(stlcd.TextData[stlcd.cmdData - 1], argv[2], COLUMN_NUM);
-else
-memcpy(stlcd.TextData[stlcd.cmdData - 1], argv[2], len);
-stlcd.cmd = CMD_WRITE_STRING;
-fd = open(TEXTLCD_DRIVER_NAME,O_RDWR); // open driver
-if ( fd < 0 ) {
-perror("driver (//dev//peritextlcd) open error.\n");
-return 1;
-}
-write(fd,&stlcd,sizeof(stTextLCD));
-close(fd);
-return 0;
+	printf("%s %s\r\n",lined,textd);
+	unsigned int linenum = 0;
+	stTextLCD stlcd; // stTextLCD 구조체를 가지고 드라이버와 인터페이스
+	int fd;
+	int len;
+	memset(&stlcd,0,sizeof(stTextLCD)); // 구조체 초기화
+	if (argc < 3 ) { // line 정보와 쓸 정보를 확인
+		perror(" Args number is less than 2\n");
+		return 1;
+	}
+	linenum = strtol(line,NULL,10);
+	printf("linenum :%d\n", linenum);
+	if ( linenum == 1)
+		stlcd.cmdData = CMD_DATA_WRITE_LINE_1;
+	else if ( linenum == 2)
+		stlcd.cmdData = CMD_DATA_WRITE_LINE_2;
+	else {
+		printf("linenum : %d wrong . range (1 ~ 2)\n", linenum);
+		return 1;
+	}
+	len = strlen(text);
+	if ( len > COLUMN_NUM)
+		memcpy(stlcd.TextData[stlcd.cmdData - 1], text, COLUMN_NUM);
+	else
+		memcpy(stlcd.TextData[stlcd.cmdData - 1], text, len);
+	stlcd.cmd = CMD_WRITE_STRING;
+	fd = open(TEXTLCD_DRIVER_NAME,O_RDWR); // open driver
+	if ( fd < 0 ) {
+	perror("driver (//dev//peritextlcd) open error.\n");
+	return 1;
+	}
+	write(fd,&stlcd,sizeof(stTextLCD));
+	close(fd);
+	return 0;
 }
 
