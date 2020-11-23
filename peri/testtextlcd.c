@@ -9,5 +9,5 @@
 int main(){
 	printf("what");
 	textlcdline(1);
-	textlcdtext("hello");
+	textlcdtext('hello');
 }

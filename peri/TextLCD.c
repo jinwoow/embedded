@@ -15,7 +15,7 @@ int len;
 
 void textlcdline(char line)
 {
-	printf("i dont no");
+	printf("i dont no\r\n");
 	memset(&stlcd,0,sizeof(stTextLCD)); // 구조체 초기화
 	linenum = strtol(line,NULL,10);
 	printf("linenum :%d\n", linenum);
@@ -30,7 +30,7 @@ void textlcdline(char line)
 }
 
 void textlcdtext(char text){
-	printf("i dont no!!");
+	printf("i dont no!!\r\n");
 	len = strlen(text);
 	if (len > COLUMN_NUM)
 	memcpy(stlcd.TextData[stlcd.cmdData - 1], text, COLUMN_NUM);
