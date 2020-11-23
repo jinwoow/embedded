@@ -7,5 +7,6 @@
 #include "textlcddrv.h"
 
 int main(){
+	printf("gogo");
 	textlcd("1","hello");
 }

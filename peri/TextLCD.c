@@ -9,6 +9,7 @@
 
 int textlcd(char *line, char *text)
 {
+	printf("??\r\n");
 	printf("%s %s\r\n",line,text);
 	unsigned int linenum = 0;
 	stTextLCD stlcd; // stTextLCD 구조체를 가지고 드라이버와 인터페이스
