@@ -17,7 +17,7 @@ int textlcd(char **line, char **text)
 {
 	printf("i dont no\r\n");
 	memset(&stlcd,0,sizeof(stTextLCD)); // 구조체 초기화
-	linenum=strtol(line,NULL,10);
+	linenum=strtol(line[0],NULL,10);
 	printf("linenum :%d\n", linenum);
 	if ( linenum == 1)
 		stlcd.cmdData = CMD_DATA_WRITE_LINE_1;
@@ -28,11 +28,11 @@ int textlcd(char **line, char **text)
 	return 1;
 	}
 	printf("i dont no!!\r\n");
-	len = strlen(text);
+	len = strlen(text[0]);
 	if (len > COLUMN_NUM)
-	memcpy(stlcd.TextData[stlcd.cmdData - 1], text, COLUMN_NUM);
+	memcpy(stlcd.TextData[stlcd.cmdData - 1], text[0], COLUMN_NUM);
 	else
-	memcpy(stlcd.TextData[stlcd.cmdData - 1], text, len);
+	memcpy(stlcd.TextData[stlcd.cmdData - 1], text[0], len);
 	stlcd.cmd = CMD_WRITE_STRING;
 	fd = open(TEXTLCD_DRIVER_NAME,O_RDWR); // open driver
 	if ( fd < 0 ) {
