@@ -15,10 +15,6 @@ int textlcd(char *line, char *text)
 	int fd;
 	int len;
 	memset(&stlcd,0,sizeof(stTextLCD)); // 구조체 초기화
-	if (argc < 3 ) { // line 정보와 쓸 정보를 확인
-		perror(" Args number is less than 2\n");
-		return 1;
-	}
 	linenum = strtol(line,NULL,10);
 	printf("linenum :%d\n", linenum);
 	if ( linenum == 1)
