@@ -13,12 +13,11 @@ stTextLCD stlcd; // stTextLCD 구조체를 가지고 드라이버와 인터페�
 int fd;
 int len;
 
-int textlcd(char line, char text)
+int textlcd(char **line, char **text)
 {
-	char lined[100]="1, hello";
 	printf("i dont no\r\n");
 	memset(&stlcd,0,sizeof(stTextLCD)); // 구조체 초기화
-	linenum=strtol(lined,NULL,10);
+	linenum=strtol(line,NULL,10);
 	printf("linenum :%d\n", linenum);
 	if ( linenum == 1)
 		stlcd.cmdData = CMD_DATA_WRITE_LINE_1;
@@ -29,11 +28,11 @@ int textlcd(char line, char text)
 	return 1;
 	}
 	printf("i dont no!!\r\n");
-	len = strlen(lined[1]);
+	len = strlen(text);
 	if (len > COLUMN_NUM)
-	memcpy(stlcd.TextData[stlcd.cmdData - 1], lined[1], COLUMN_NUM);
+	memcpy(stlcd.TextData[stlcd.cmdData - 1], text, COLUMN_NUM);
 	else
-	memcpy(stlcd.TextData[stlcd.cmdData - 1], lined[1], len);
+	memcpy(stlcd.TextData[stlcd.cmdData - 1], text, len);
 	stlcd.cmd = CMD_WRITE_STRING;
 	fd = open(TEXTLCD_DRIVER_NAME,O_RDWR); // open driver
 	if ( fd < 0 ) {
