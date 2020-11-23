@@ -7,6 +7,5 @@
 #include "textlcddrv.h"
 
 int main(){
-	printf("what\r\n");
 	textlcd(1,'hello');
 }
