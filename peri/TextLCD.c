@@ -9,6 +9,7 @@
 
 int textlcd(char **argv)
 {
+	printf("WOW\r\n");
 unsigned int linenum = 0;
 stTextLCD stlcd; // stTextLCD 구조체를 가지고 드라이버와 인터페이스
 int fd;
