@@ -7,7 +7,7 @@
 #include "textlcddrv.h"
 #define TEXTLCD_DRIVER_NAME "/dev/peritextlcd"
 
-int textlcd(int argc , char **argv)
+int textlcd(char **argv)
 {
 unsigned int linenum = 0;
 stTextLCD stlcd; // stTextLCD 구조체를 가지고 드라이버와 인터페이스
