@@ -7,12 +7,9 @@
 #include "textlcddrv.h"
 #define TEXTLCD_DRIVER_NAME "/dev/peritextlcd"
 
-int textlcd(char line, char text)
+int textlcd(char *line, char *text)
 {
-	char lined=1;
-	char textd="hello";
-	printf("WOW\r\n");
-	printf("%s %s\r\n",lined,textd);
+	printf("%s %s\r\n",line,text);
 	unsigned int linenum = 0;
 	stTextLCD stlcd; // stTextLCD 구조체를 가지고 드라이버와 인터페이스
 	int fd;

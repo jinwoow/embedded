@@ -7,5 +7,5 @@
 #include "textlcddrv.h"
 
 int main(){
-	textlcd("testlcdtext",1,1,"hello");
+	textlcd("1","hello");
 }
