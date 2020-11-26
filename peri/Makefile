@@ -1,7 +1,7 @@
 all: libMyperi.a
 
-libMyperi.a:button.o led.o buzzer.o textlcd.o fnd.o colorled.o
-	arm-linux-gnueabi-ar rc libMyperi.a led.o button.o buzzer.o textlcd.o fnd.o colorled.o
+libMyperi.a:button.o led.o buzzer.o textlcd.o fnd.o colorled.o Temperature.o
+	arm-linux-gnueabi-ar rc libMyperi.a led.o button.o buzzer.o textlcd.o fnd.o colorled.o Temperature.o
 
 button.o:button.h button.c
 	arm-linux-gnueabi-gcc -c button.c -o button.o
@@ -20,6 +20,9 @@ fnd.o:fnd.c fnddrv.h
 
 colorled.o:colarled.c
 	arm-linux-gnueabi-gcc -c colarled.c -o colorled.o
+
+Temperature.o:Temperature.c
+	arm-linux-gnueabi-gcc -c Temperature.c -o Temperature.o
 
 clean:
 	rm *.o
