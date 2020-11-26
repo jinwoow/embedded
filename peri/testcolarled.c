@@ -6,5 +6,7 @@
 #include <fcntl.h>
 
 int main(){
-	colarlcd(50,20,30);
+	colarled("10","10","10");
+	sleep(3);
+	colarled("90","90","90");
 }

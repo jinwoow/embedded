@@ -1,7 +1,7 @@
 all: libMyperi.a
 
-libMyperi.a:button.o led.o buzzer.o textlcd.o fnd.o
-	arm-linux-gnueabi-ar rc libMyperi.a led.o button.o buzzer.o textlcd.o fnd.o
+libMyperi.a:button.o led.o buzzer.o textlcd.o fnd.o colorled.o
+	arm-linux-gnueabi-ar rc libMyperi.a led.o button.o buzzer.o textlcd.o fnd.o colorled.o
 
 button.o:button.h button.c
 	arm-linux-gnueabi-gcc -c button.c -o button.o
@@ -18,6 +18,8 @@ textlcd.o:TextLCD.c textlcddrv.h
 fnd.o:fnd.c fnddrv.h
 	arm-linux-gnueabi-gcc -c fnd.c -o fnd.o
 
+colorled.o:colarled.c
+	arm-linux-gnueabi-gcc -c colarled.c -o colorled.o
 
 clean:
 	rm *.o
