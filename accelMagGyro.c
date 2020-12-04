@@ -21,6 +21,7 @@ int accel[3];
 fscanf(fp,"%d, %d, %d",&accel[0],&accel[1],&accel[2]);
 printf ("I read Accel %d, %d, %d\r\n",accel[0],accel[1],accel[2]);
 fclose(fp);
+return 0;
 }
 
 int Magnet(void)
@@ -33,6 +34,7 @@ int magne[3];
 fscanf(fp,"%d, %d, %d",&magne[0],&magne[1],&magne[2]);
 printf ("I read Magneto %d, %d, %d\r\n",magne[0],magne[1],magne[2]);
 fclose(fp);
+return 0;
 }
 
 int Gyroscope(void)
