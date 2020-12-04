@@ -6,7 +6,8 @@
 
 int main(void)
 {
-    int Acceler();
-    int Magnet();
-    int Gyroscope();
+    Acceler();
+    Magnet();
+    Gyroscope();
+    return 0;
 }
