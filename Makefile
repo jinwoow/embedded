@@ -12,8 +12,8 @@ main.elf:main.o libMyperi.a
 main.o:main.c
 	$(CC) -c -o main.o main.c
 
-libMyperi.a:item.o power.o itemp.o itemup.o button.o led.o buzzer.o textlcd.o fnd.o colorled.o Temperature.o accelMagGro.o
-	arm-linux-gnueabi-ar rc libMyperi.a led.o button.o buzzer.o textlcd.o fnd.o colorled.o Temperature.o item.o power.o itemp.o itemup.o accelMagGro.o
+libMyperi.a:item.o power.o itemp.o itemup.o button.o led.o buzzer.o textlcd.o fnd.o colorled.o Temperature.o accelMagGyro.o
+	arm-linux-gnueabi-ar rc libMyperi.a led.o button.o buzzer.o textlcd.o fnd.o colorled.o Temperature.o item.o power.o itemp.o itemup.o accelMagGyro.o
 	mv libMyperi.a ../
 
 item.o:readitem.c
@@ -49,8 +49,8 @@ colorled.o:colarled.c
 Temperature.o:Temperature.c
 	$(CC) -c Temperature.c -o Temperature.o
 
-accelMagGro.o:accelMagGyro.h accelMagGyro.c
-	arm-linux-gnueabi-gcc -c accelMagGyro.c -o accelMagGyro.o
+accelMagGyro.o:accelMagGyro.h accelMagGyro.c
+	$(CC) -c accelMagGyro.c -o accelMagGyro.o
 	
 clean:
 	rm -f *.o

@@ -6,7 +6,6 @@
 #include <pthread.h>
 #include <sys/shm.h>
 #include <sys/msg.h>
-#include "myProject.h"
 
 #define SIZE 201
 

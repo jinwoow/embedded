@@ -2,7 +2,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
-#include "myProject.h"
 #include <time.h>
 #include <string.h>
 
