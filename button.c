@@ -86,6 +86,7 @@ static void *buttonThFunc(void*a)     //버튼눌리거나 버튼 릴리즈될�
    struct input_event stEvent;     //버튼 누르고 떼고 입력값받는구조체
    msgTx.messageNum = 1.0;         //롱인트에 아무 양수입력
    //msgTx.keyInput =0; //넣어야되나
+   printf("YOU NEED KEYINPUT\n");
 
    while(1)
    {
@@ -98,6 +99,7 @@ static void *buttonThFunc(void*a)     //버튼눌리거나 버튼 릴리즈될�
       //if((stEvent.type==EV_KEY)&&(stEvent.value>0))    //키가눌리면
       if(stEvent.type)
       {
+		  printf("KEYINPUT!!!!!!!!!!!!!!!\n");
          //printf("타입=%d, 코드=%d, 밸류=%d\n\r",stEvent.type,stEvent.code,stEvent.value);
          msgTx.keyInput=stEvent.code;   //값 메시지구조체에 입력
          msgTx.pressed=stEvent.value;   //눌리거나 떼어진 값 메시지구조체에 입력
