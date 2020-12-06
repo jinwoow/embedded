@@ -39,8 +39,14 @@ int itemup()
 	lseek(fditemup,(off_t)0,SEEK_SET);
 	
 	int itemplus=atoi(buf);
-	
-	textlcd("1","upgrade");
+	textlcd("2","i can do it");
+	textlcd("1","upgrade....wait 4");
+	sleep(1);
+	textlcd("1","upgrade....wait 3");
+	sleep(1);
+	textlcd("1","upgrade....wait 2");
+	sleep(1);
+	textlcd("1","upgrade....wait 1");
     //printf("현재 강화 수 : %d\r\n",itemplus);
     fdpower=open("power.txt",O_RDWR);
 	if(fdpower==-1){
@@ -55,14 +61,10 @@ int itemup()
 	lseek(fdpower,(off_t)0,SEEK_SET);//power 자리수 buff 자리수 만큼 해주기 malloc
 	//char buff=(char*)malloc(자리수*sizeof(char));
 	//printf("현재 전투력: %d\r\n",power);
-	
-	textlcd("2","i can do it");
-	sleep(4);
 	//msgRx.keyInput=0;
 	//returnValue=0;
-	printf("%d",itemplus);
 	switch(itemplus){
-												case 1:
+														case 1:
 														if(a>=0&&a<=9){
 															textlcd("1","SUCCESE !! power+100");
 															itemplus++;
