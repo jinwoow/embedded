@@ -173,6 +173,8 @@ void* DoSomeThing(void *arg)
 										textlcd("2","item upgrade");
 										sleep(1);
 										itemup();
+										
+										
 										textlcd("1","input");
 										textlcd("2","item upgrade");
 										//FileRead
