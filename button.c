@@ -25,6 +25,12 @@ char inputDevPath[200]={0,};
 int buttonInit(void)
 {
 	printf("buttoninitstart!\n");
+	 if(probeButtonPath(inputDevPath)==0)
+   {
+        printf("error\r\n");
+        printf("did you insmod?\r\n");
+        return 0;
+    }
 //if (probeButtonPath(buttonPath) == 0)
 //return 0;
 //fd=open (buttonPath, O_RDONLY);  //노드 열기
@@ -44,6 +50,7 @@ int buttonExit(void)
 
 int probeButtonPath(char *newPath)
 {
+	printf("buttonPathstart!\n");
     int returnValue = 0;
     int number = 0;
     FILE *fp = fopen(PROBE_FILE,"rt");
@@ -74,6 +81,7 @@ int probeButtonPath(char *newPath)
 
 static void *buttonThFunc(void*a)     //버튼눌리거나 버튼 릴리즈될때마다 메세지보내는 쓰레드함수
 {
+	printf("buttonwow!\n");
    BUTTON_MSG_T msgTx;                    //메시지 전달구조체
    struct input_event stEvent;     //버튼 누르고 떼고 입력값받는구조체
    msgTx.messageNum = 1.0;         //롱인트에 아무 양수입력

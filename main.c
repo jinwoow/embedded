@@ -103,7 +103,6 @@ void* DoSomeThing(void *arg)
 		while(1)
 		{
 			//printf("무엇을 선택하겠는가? ");
-
 			returnValue=msgrcv(msgID,&msgRx,8,0,IPC_NOWAIT);
 			if(returnValue>0)
 			{
