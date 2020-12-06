@@ -207,7 +207,7 @@ void* DoSomeThing(void *arg)
 	jpeg_create_decompress(&cinfo);
 	
 	
-	FILE *fp = fopen("test.jpg", "rb");
+	FILE *fp = fopen("upgrade.jpg", "rb");
 	jpeg_stdio_src(&cinfo, fp);
 	jpeg_read_header(&cinfo, TRUE); 
 	//printf ("JPG %d by %d by %d, %d\n",
