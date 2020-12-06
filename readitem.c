@@ -12,7 +12,7 @@ int item(void)
 	ssize_t nread;
 	fditem=open("item.txt",O_RDONLY);
 	if(fditem==-1){
-		printf("file open error!\n");
+		printf("fditem file open error!\n");
 		exit(1);
 	}
 	printf("착용 장비 : ");

@@ -14,7 +14,7 @@ int power(void)
 	char buff[10];
 	fdpower=open("power.txt",O_RDWR);
 	if(fdpower==-1){
-		printf("file open error!\n");
+		printf("fdpower file open error!\n");
 		exit(1);
 	}
 	printf("어플 시작시 전투력 : ");

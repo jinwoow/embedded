@@ -12,7 +12,7 @@ int itemp()
 	ssize_t nread;
 	fditemp=open("itemp.txt",O_RDONLY);
 	if(fditemp==-1){
-		printf("file open error!\n");
+		printf("fd itemp file open error!\n");
 		exit(1);
 	}
 	printf("현재 강화된 수 : ");
