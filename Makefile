@@ -5,6 +5,7 @@ all: main.elf
 main.elf:main.o libMyperi.a
 	mv libMyperi.a ../
 	$(CC) main.o -o main.elf -L../ -L../libjpeg -l mylib -l jpeg -l Myperi -lpthread
+	scp main.elf ecube@192.168.35.60:/home/ecube
 	
 main.o:main.c button.h
 	$(CC) -c -o main.o main.c
@@ -15,13 +16,13 @@ libMyperi.a:item.o power.o itemp.o itemup.o button.o led.o buzzer.o textlcd.o fn
 item.o:readitem.c
 	$(CC) -c readitem.c -o item.o
 
-power.o:readpower.c
+power.o:readpower.c fnd.o
 	$(CC) -c readpower.c -o power.o 
 
 itemp.o:readitemp.c
 	$(CC) -c readitemp.c -o itemp.o
 	
-itemup.o:itemup.c
+itemup.o:itemup.c textlcd.o button.o led.o textlcd.o colorled.o fnd.o button.h
 	$(CC) -c itemup.c -o itemup.o
 
 button.o:button.h button.c

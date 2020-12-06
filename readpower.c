@@ -28,6 +28,7 @@ int power()
 		sleep(1);
 		power++;
 		//printf("%d\r\n",power);
+		fndDisp(power,0);
 		lseek(fdpower,(off_t)0,SEEK_SET);
 		sprintf(buff,"%d",power);
 	    write(fdpower,buff,sizeof(buff));

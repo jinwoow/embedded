@@ -4,7 +4,14 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-
+#include "button.h"
+#include <sys/msg.h>
+#include <linux/input.h>
+#include <sys/ioctl.h>
+#include <sys/msg.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+static int returnValue =0;
 int itemup()
 {
 	int a;
@@ -33,8 +40,8 @@ int itemup()
 	
 	int itemplus=atoi(buf);
 	
-	
-    printf("현재 강화 수 : %d\r\n",itemplus);
+	textlcd("1","upgrade : %d",itemplus);
+    //printf("현재 강화 수 : %d\r\n",itemplus);
     fdpower=open("power.txt",O_RDWR);
 	if(fdpower==-1){
 		printf("file open error!\n");
@@ -47,165 +54,158 @@ int itemup()
 	int power=atoi(buf);
 	lseek(fdpower,(off_t)0,SEEK_SET);//power 자리수 buff 자리수 만큼 해주기 malloc
 	//char buff=(char*)malloc(자리수*sizeof(char));
-	printf("현재 전투력: %d\r\n",power);
+	//printf("현재 전투력: %d\r\n",power);
 	
-    switch(itemplus){
+	textlcd("2","1. challenge 2. out");
+	
+	while(1){
+		buttonInit();
+		BUTTON_MSG_T msgRx;
+		int msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);//메시지큐
+		while(1)
+		{
+			//printf("무엇을 선택하겠는가? ");
+			returnValue=msgrcv(msgID,&msgRx,8,0,IPC_NOWAIT);
+			if(returnValue>0)
+			{
+				if((msgRx.keyInput>0)&&(msgRx.pressed>0)){
+					switch(msgRx.keyInput)
+					{
+						case KEY_VOLUMEUP:
+										switch(itemplus){
 		case 1:
 		if(a>=0&&a<=9){
-			printf("강화성공\r\n");
+			textlcd("1","SUCCESE !! power+100");
 			itemplus++;
 			sprintf(buff,"%d",itemplus);
 			write(fditemup,buff,sizeof(buff));
-			printf("장비강화 성공 후 강화된 수:%d\r\n",itemplus);
-			sleep(1);
+			textlcd("2","strengthen : %d",itemplus);
 			power=power+100;
-			printf("장비강화 성공 후전투력: %d\r\n",power);
 			sprintf(buff,"%d",power);
 	        write(fdpower,buff,sizeof(buff));
 			break;
 		}
 		else{
-			printf("강화실패\r\n");
-			sleep(1);
+			textlcd("1","fail");
 			break;
 		}
 		
 		case 2:	
 		if(a>=0&&a<=8){
-			printf("강화성공\r\n");
+			textlcd("1","SUCCESE !! power+200");
 			itemplus++;
 			sprintf(buff,"%d",itemplus);
 			write(fditemup,buff,sizeof(buff));
-			printf("장비강화 성공 후 강화된 수:%d\r\n",itemplus);
-			sleep(1);
+			textlcd("2","strengthen : %d",itemplus);
 			power=power+200;
-			printf("장비강화 성공 후전투력: %d\r\n",power);
 			sprintf(buff,"%d",power);
 	        write(fdpower,buff,sizeof(buff));
 			break;
 		}
 		else{
-			printf("강화실패\r\n");
-			sleep(1);
+			textlcd("1","fail");
 			break;
 		}
 		
 		case 3:
 		if(a>=0&&a<=7){
-			printf("강화성공\r\n");
+			textlcd("1","SUCCESE !! power+300");
 			itemplus++;
 			sprintf(buff,"%d",itemplus);
 			write(fditemup,buff,sizeof(buff));
-			printf("장비강화 성공 후 강화된 수:%d\r\n",itemplus);
-			sleep(1);
+			textlcd("2","strengthen : %d",itemplus);
 			power=power+300;
-			printf("장비강화 성공 후전투력: %d\r\n",power);
 			sprintf(buff,"%d",power);
 	        write(fdpower,buff,sizeof(buff));
 			break;
 		}
 		else{
-			printf("강화실패\r\n");
+			textlcd("1","fail");
 			break;
 		}
 		
 		case 4:
 		if(a>=0&&a<=6){
-			printf("강화성공\r\n");
+			textlcd("1","SUCCESE !! power+400");
 			itemplus++;
 			sprintf(buff,"%d",itemplus);
 			write(fditemup,buff,sizeof(buff));
-			printf("장비강화 성공 후 강화된 수:%d\r\n",itemplus);
-			sleep(1);
+			textlcd("2","strengthen : %d",itemplus);
 			power=power+400;
-			printf("장비강화 성공 후전투력: %d\r\n",power);;
 			sprintf(buff,"%d",power);
 	        write(fdpower,buff,sizeof(buff));
 			break;
 		}
 		else{
-			printf("강화실패\r\n");
-			sleep(1);
+			textlcd("1","fail");
 			break;
 		}
 		
 		case 5:
 		if(a>=0&&a<=5){
-			printf("강화성공\r\n");
+			textlcd("1","SUCCESE !! power+500");
 			itemplus++;
 			sprintf(buff,"%d",itemplus);
 			write(fditemup,buff,sizeof(buff));
-			printf("장비강화 성공 후 강화된 수:%d\r\n",itemplus);
-			sleep(1);
+			textlcd("2","strengthen : %d",itemplus);
 			power=power+500;
-			printf("장비강화 성공 후전투력: %d\r\n",power);
 			sprintf(buff,"%d",power);
 	        write(fdpower,buff,sizeof(buff));
 			break;
 		}
 		else{
-			printf("강화실패\r\n");
-			sleep(1);
+			textlcd("1","fail");
 			break;
 		}
 		
 		case 6:
 		if(a>=0&&a<=4){
-			printf("강화성공\r\n");
+			textlcd("1","SUCCESE !! power+600");
 			itemplus++;
 			sprintf(buff,"%d",itemplus);
 			write(fditemup,buff,sizeof(buff));
-			printf("장비강화 성공 후 강화된 수:%d\r\n",itemplus);
-			sleep(1);
+			textlcd("2","strengthen : %d",itemplus);
 			power=power+600;
-			printf("장비강화 성공 후전투력: %d\r\n",power);
 			sprintf(buff,"%d",power);
 	        write(fdpower,buff,sizeof(buff));
 			break;
 		}
 		else{
-			printf("강화실패\r\n");
-			sleep(1);
+			textlcd("1","fail");
 			break;
 		}
 		
 		case 7:
 		if(a>=0&&a<=3){
-			printf("강화성공\r\n");
+			textlcd("1","SUCCESE !! power+700");
 			itemplus++;
 			sprintf(buff,"%d",itemplus);
 			write(fditemup,buff,sizeof(buff));
-			printf("장비강화 성공 후 강화된 수:%d\r\n",itemplus);
-			sleep(1);
+			textlcd("2","strengthen : %d",itemplus);
 			power=power+700;
-			printf("장비강화 성공 후전투력: %d\r\n",power);
 			sprintf(buff,"%d",power);
 	        write(fdpower,buff,sizeof(buff));
 			break;
 		}
 		else{
-			printf("강화실패\r\n");
-			sleep(1);
+			textlcd("1","fail");
 			break;
 		}
 		
 		case 8:
 		if(a>=0&&a<=2){
-			printf("강화성공\r\n");
+			textlcd("1","SUCCESE !! power+800");
 			itemplus++;
 			sprintf(buff,"%d",itemplus);
 			write(fditemup,buff,sizeof(buff));
-			printf("장비강화 성공 후 강화된 수:%d\r\n",itemplus);
-			sleep(1);
+			textlcd("2","strengthen : %d",itemplus);
 			power=power+800;
-			printf("장비강화 성공 후전투력: %d\r\n",power);;
 			sprintf(buff,"%d",power);
 	        write(fdpower,buff,sizeof(buff));
 			break;
 		}
 		else{
-			printf("강화실패\r\n");
-			sleep(1);
+			textlcd("1","fail");
 			break;
 		}
 		
@@ -214,6 +214,20 @@ int itemup()
 		sleep(1);
 		break;
 }
+										break;
+						case KEY_HOME:
+										break;
+						case KEY_SEARCH:break;
+						case KEY_BACK:break;
+						case KEY_MENU:break;
+						case KEY_VOLUMEDOWN:break;
+					}
+				}
+			else
+			;
+			}
+		}
+	}
 	//printf("%d\n",a);
 	close(fditemup);
 	close(fdpower);

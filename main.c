@@ -30,23 +30,6 @@ pthread_mutex_t lock;
 void* doSomeThing(void *arg)
 {
     power();
-    int fdpower;
-	char buf[1024];
-	off_t newpos;
-	ssize_t nread;
-	int cnt=0;
-	char buff[10];
-	fdpower=open("power.txt",O_RDWR);
-	if(fdpower==-1){
-		printf("file open error!\n");
-		exit(1);
-	}
-	nread=read(fdpower,buf,1024);
-	int Power=atoi(buf);
-	fndDisp(Power,0);
-	//printf("%d\r\n",power);
-	lseek(fdpower,(off_t)0,SEEK_SET);
-	close(fdpower);
 }
 
 void* DoSomeThing(void *arg)
@@ -127,6 +110,7 @@ void* DoSomeThing(void *arg)
 		int msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);//메시지큐
 		while(1)
 		{
+			textlcd("1","1. item upgrade 2.exit");
 			printf("무엇을 선택하겠는가? ");
 			returnValue=msgrcv(msgID,&msgRx,8,0,IPC_NOWAIT);
 			if(returnValue>0)
@@ -136,12 +120,11 @@ void* DoSomeThing(void *arg)
 					{
 						case KEY_VOLUMEUP:
 										printf("1: 장비강화\r\n");
+										sleep(1);
 										itemup();
 										break;
 						case KEY_HOME: 
-										printf("2: 종료\r\n");
-										printf("프로그램을 종료합니다\r\n");
-										printf("어플 종료시 전투력 : ");
+										textlcd("1","bye");
 										while(nread=read(fdpower,buf,1024)>0){
 										printf("%s\r\n",buf);
 										lseek(fdpower,(off_t)0,SEEK_CUR);
