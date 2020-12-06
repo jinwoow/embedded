@@ -40,13 +40,13 @@ int itemup()
 	
 	int itemplus=atoi(buf);
 	textlcd("2","i can do it");
-	textlcd("1","upgrade....wait 4");
+	textlcd("1","upgrade..wait 4");
 	sleep(1);
-	textlcd("1","upgrade....wait 3");
+	textlcd("1","upgrade..wait 3");
 	sleep(1);
-	textlcd("1","upgrade....wait 2");
+	textlcd("1","upgrade..wait 2");
 	sleep(1);
-	textlcd("1","upgrade....wait 1");
+	textlcd("1","upgrade..wait 1");
     //printf("현재 강화 수 : %d\r\n",itemplus);
     fdpower=open("power.txt",O_RDWR);
 	if(fdpower==-1){
@@ -74,10 +74,12 @@ int itemup()
 															power=power+100;
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
+															sleep(2);
 															break;
 														}
 														else{
 															textlcd("1","fail");
+															sleep(2);
 															break;
 														}
 		
@@ -91,10 +93,12 @@ int itemup()
 															power=power+200;
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
+															sleep(2);
 														break;
 														}
 														else{
 															textlcd("1","fail");
+															sleep(2);
 															break;
 														}
 		
@@ -108,10 +112,12 @@ int itemup()
 															power=power+300;
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
+															sleep(2);
 															break;
 														}
 														else{
 															textlcd("1","fail");
+															sleep(2);
 															break;
 														}
 		
@@ -125,10 +131,12 @@ int itemup()
 															power=power+400;
 															sprintf(buff,"%d",power);
 	 												       write(fdpower,buff,sizeof(buff));
+	 												       sleep(2);
 															break;
 														}
 														else{
 															textlcd("1","fail");
+															sleep(2);
 															break;
 														}
 		
@@ -142,10 +150,12 @@ int itemup()
 															power=power+500;
 															sprintf(buff,"%d",power);
 	   												     write(fdpower,buff,sizeof(buff));
+	   												     sleep(2);
 															break;
 														}
 														else{
 															textlcd("1","fail");
+															sleep(2);
 															break;
 														}
 		
@@ -159,10 +169,12 @@ int itemup()
 															power=power+600;
 															sprintf(buff,"%d",power);
 	  												      write(fdpower,buff,sizeof(buff));
+	  												      sleep(2);
 															break;
 														}
 														else{
 															textlcd("1","fail");
+															sleep(2);
 															break;
 														}
 		
@@ -176,10 +188,12 @@ int itemup()
 															power=power+700;
 															sprintf(buff,"%d",power);
 	     												   write(fdpower,buff,sizeof(buff));
+	     												   sleep(2);
 															break;
 														}
 														else{
 															textlcd("1","fail");
+															sleep(2);
 															break;
 														}
 		
@@ -193,15 +207,19 @@ int itemup()
 															power=power+800;
 															sprintf(buff,"%d",power);
 	    												    write(fdpower,buff,sizeof(buff));
+	    												    sleep(2);
 															break;
 														}
 														else{
 															textlcd("1","fail");
+															sleep(2);
 															break;
 														}
 		
 														case 9:
+															textlcd("1","Don't be greedy.");
 															printf("더 이상 강화할수 없습니다.\r\n");
+															sleep(2);
 															sleep(1);
 															break;
 														}
