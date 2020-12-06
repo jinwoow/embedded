@@ -376,6 +376,7 @@ int itemup()
 															sleep(1);
 															break;
 														}
+														
 	close(fditemup);
 	close(fdpower);
 	return 0;

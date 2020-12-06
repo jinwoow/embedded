@@ -42,7 +42,15 @@ void* DoSomeThing(void *arg)
 	int cnt=0;
 	char buff[10];
 	
-    int screen_width;
+
+	//lseek(fdpower,(off_t)0,SEEK_SET);
+	textlcd("1","1. item upgrade");
+	textlcd("2","2.exit");
+	//printf("1: 장비강화\r\n");
+	//printf("2: 종료\r\n");
+    while(1){
+		buttonInit();
+		int screen_width;
     int screen_height;
     int bits_per_pixel;
     int line_length;
@@ -94,14 +102,6 @@ void* DoSomeThing(void *arg)
 	free(data);
 
 	fb_close();
-
-	lseek(fdpower,(off_t)0,SEEK_SET);
-	textlcd("1","1. item upgrade");
-	textlcd("2","2.exit");
-	//printf("1: 장비강화\r\n");
-	//printf("2: 종료\r\n");
-    while(1){
-		buttonInit();
 		BUTTON_MSG_T msgRx;
 		int msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);//메시지큐
 		textlcd("1","1. item upgrade");
