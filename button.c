@@ -22,10 +22,8 @@ int msgID=0;
 static pthread_t buttonTh_id;
 char inputDevPath[200]={0,};
 
-
 int buttonInit(void)
 {
-	int count=0;
 	
 	if(probeButtonPath(inputDevPath)==0)
     {
@@ -35,18 +33,6 @@ int buttonInit(void)
     }
     fd=open(inputDevPath, O_RDONLY);
     msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);
-    while (1)
-	{
-		int returnValue = 0;
-		BUTTON_MSG_T tmpmsg;
-		returnValue = msgrcv(msgID, &tmpmsg, sizeof(tmpmsg)-sizeof(long int), 0, IPC_NOWAIT);
-		if (returnValue == -1) break; //There is no message at all
-			count++;
-		printf ("%d message Comes: [%s]\r\n",count, tmpmsg.keyInput);
-	}
-	printf ("\tI got %d messages in the queue\r\n",count);
-//여기까지 Message Queue 예제에서 복붙
-
     pthread_create(&buttonTh_id, NULL, buttonThFunc, NULL);
     return 1;
 }
