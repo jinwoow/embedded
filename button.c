@@ -22,6 +22,25 @@ int msgID=0;
 static pthread_t buttonTh_id;
 char inputDevPath[200]={0,};
 
+
+//여기서부터 Message Queue 예제 (받는 프로그램) 에서 복붙
+	while (1)
+	{
+		int returnValue = 0;
+		BUTTON_MSG_T tmpmsg;
+		returnValue = msgrcv(msgID, &tmpmsg, sizeof(tmpmsg)-sizeof(long int)
+), 0, IPC_NOWAIT);
+		if (returnValue == -1) break; //There is no message at all
+			count++;
+		printf ("%d message Comes: [%s]\r\n",count, messageRxData.piggyBack);
+	}
+	printf ("\tI got %d messages in the queue\r\n",count);
+//여기까지 Message Queue 예제에서 복붙
+
+    pthread_create(&buttonTh_id, NULL, buttonThFunc, NULL);
+    return 1;
+}
+
 int buttonInit(void)
 {
 	
@@ -32,7 +51,19 @@ int buttonInit(void)
         return 0;
     }
     fd=open(inputDevPath, O_RDONLY);
-    msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);
+    msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);while (1)
+	{
+		int returnValue = 0;
+		BUTTON_MSG_T tmpmsg;
+		returnValue = msgrcv(msgID, &tmpmsg, sizeof(tmpmsg)-sizeof(long int)
+), 0, IPC_NOWAIT);
+		if (returnValue == -1) break; //There is no message at all
+			count++;
+		printf ("%d message Comes: [%s]\r\n",count, messageRxData.piggyBack);
+	}
+	printf ("\tI got %d messages in the queue\r\n",count);
+//여기까지 Message Queue 예제에서 복붙
+
     pthread_create(&buttonTh_id, NULL, buttonThFunc, NULL);
     return 1;
 }
@@ -96,3 +127,22 @@ static void *buttonThFunc(void*a)
       ;
    }
 }
+
+static void *buttonThFunc(void* arg)
+{    
+    BUTTON_MSG_T msgTx;
+    msgTx.messageNum = 1;
+    struct input_event stEvent;
+    while (1)
+    {
+        read(fd, &stEvent, sizeof (stEvent));
+        printf ("Event Occur!\r\n");
+        if ( ( stEvent.type == EV_KEY) && (stEvent.value == 0) ) //이부분 수정
+        {
+            msgTx.keyInput = stEvent.code;
+            msgTx.pressed = stEvent.value;
+            msgsnd(msgID, &msgTx, 4, 0);	//이부분 수정
+        }
+    }
+}
+

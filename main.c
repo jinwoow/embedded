@@ -95,7 +95,7 @@ void* DoSomeThing(void *arg)
 
 	fb_close();
 
-	lseek(fdpower,(off_t)0,SEEK_SET);*/
+	lseek(fdpower,(off_t)0,SEEK_SET);
 	textlcd("1","1. item upgrade");
 	textlcd("2","2.exit");
 	//printf("1: 장비강화\r\n");
@@ -105,7 +105,7 @@ void* DoSomeThing(void *arg)
 		BUTTON_MSG_T msgRx;
 		int msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);//메시지큐
 		textlcd("1","1. item upgrade");
-		textlcd("2","2.exit")
+		textlcd("2","2.exit");
 		while(1)
 		{
 			//printf("무엇을 선택하겠는가? ");
@@ -170,12 +170,12 @@ void* DoSomeThing(void *arg)
 										itemup();
 										break;
 						case KEY_HOME: 
-										textlcd("1","bye");
+										/*textlcd("1","bye");
 										while(nread=read(fdpower,buf,1024)>0){
 										printf("%s\r\n",buf);
 										lseek(fdpower,(off_t)0,SEEK_CUR);
 										}
-										exit(1);
+										exit(1);*/
 										break;
 						case KEY_SEARCH: printf("Search key:"); break;
 						case KEY_BACK: printf("Back key:"); break;
