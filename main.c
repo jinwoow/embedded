@@ -117,7 +117,6 @@ void* DoSomeThing(void *arg)
 					{
 						
 						case KEY_VOLUMEUP:
-										/*
 										//FrameBuffer init
  									   if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
 										{
@@ -163,7 +162,7 @@ void* DoSomeThing(void *arg)
 										fb_write_reverse(data, cols,rows);
 										free(data);
 
-										fb_close();*/
+										fb_close();
 										textlcd("1","input");
 										textlcd("2","item upgrade");
 										sleep(1);
