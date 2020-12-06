@@ -60,6 +60,7 @@ int itemup()
 	sleep(4);
 	//msgRx.keyInput=0;
 	//returnValue=0;
+	printf("%d",itemplus);
 	switch(itemplus){
 												case 1:
 														if(a>=0&&a<=9){
