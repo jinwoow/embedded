@@ -48,7 +48,10 @@ void* DoSomeThing(void *arg)
 	//lseek(fdpower,(off_t)0,SEEK_SET);
 	textlcd("1","1.item upgrade");
 	textlcd("2","2.exit");
-	int screen_width;
+	
+	int fdfile=open("jpgViewer",O_RDWR);
+	
+	/*int screen_width;
     int screen_height;
    	int bits_per_pixel;
    	int line_length;
@@ -97,6 +100,10 @@ void* DoSomeThing(void *arg)
 	jpeg_finish_decompress(&cinfo);
 	jpeg_destroy_decompress(&cinfo);
 	fclose(fp);
+	* fb_write_reverse(data, cols,rows);
+	free(data);
+
+	fb_close();*/
 
 
 	while(1)
@@ -123,7 +130,7 @@ void* DoSomeThing(void *arg)
 									break;
 					case KEY_MENU: printf("Menu key:"); break;
 					case KEY_VOLUMEDOWN:
-											//FrameBuffer init
+										/*	//FrameBuffer init
  									   if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
 										{
 											printf ("FrameBuffer Init Failed\r\n");
@@ -163,34 +170,13 @@ void* DoSomeThing(void *arg)
 										}
 										jpeg_finish_decompress(&cinfo);
 										jpeg_destroy_decompress(&cinfo);
-										fclose(fp);
+										fclose(fp);*/
 										
 										textlcd("1","input");
 										textlcd("2","item upgrade");
 										sleep(1);
 										itemup();
-										
-										FILE *fP = fopen("test.jpg", "rb");
-										jpeg_stdio_src(&cinfo, fP);
-										jpeg_read_header(&cinfo, TRUE); 
-										//printf ("JPG %d by %d by %d, %d\n",
-										//	cinfo.image_width,cinfo.image_height,cinfo.num_components, cinfo.output_scanline);
-										cols = cinfo.image_width;
-										rows = cinfo.image_height;
-		
-										data = malloc(cols*rows*3);
-										int currpoint = 0;
-										jpeg_start_decompress(&cinfo);
-										while(cinfo.output_scanline < cinfo.output_height) 
-										{
-											//printf ("CInfoScanlines:%d\r\n",cinfo.output_scanline);
-											char *tempPtr=&data[currpoint];
-											jpeg_read_scanlines(&cinfo, (JSAMPARRAY)&tempPtr, 1);
-											currPoint+=cols*3;
-										}
-										jpeg_finish_decompress(&cinfo);
-										jpeg_destroy_decompress(&cinfo);
-										fclose(fP);
+									
 										textlcd("1","input");
 										textlcd("2","item upgrade");
 										break;
@@ -209,10 +195,6 @@ void* DoSomeThing(void *arg)
 			else
 			;
 	}
-	fb_write_reverse(data, cols,rows);
-	free(data);
-
-	fb_close();
 }
 
 
