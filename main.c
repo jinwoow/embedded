@@ -108,8 +108,10 @@ void* DoSomeThing(void *arg)
 	free(data);
 
 	fb_close();
+
 			textlcd("1","1. item upgrade");
 			textlcd("2","2.exit");
+			sleep(3);
 			//printf("무엇을 선택하겠는가? ");
 			returnValue=msgrcv(msgID,&msgRx,8,0,IPC_NOWAIT);
 			if(returnValue>0)
@@ -119,7 +121,7 @@ void* DoSomeThing(void *arg)
 					{
 						
 						case KEY_VOLUMEUP:
-										//FrameBuffer init
+											//FrameBuffer init
  									   if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
 										{
 											printf ("FrameBuffer Init Failed\r\n");
@@ -169,6 +171,8 @@ void* DoSomeThing(void *arg)
 										textlcd("2","item upgrade");
 										sleep(1);
 										itemup();
+										msgRx.keyInput=0;
+										returnValue=0;
 										break;
 						case KEY_HOME: 
 										/*textlcd("1","bye");
@@ -183,14 +187,14 @@ void* DoSomeThing(void *arg)
 						case KEY_MENU: printf("Menu key:"); break;
 						case KEY_VOLUMEDOWN: printf("Volume down key:"); break;
 					}
-				if(msgRx.pressed)
+				/*if(msgRx.pressed)
 					printf("pressed\n\r");
 				else
 				{
 					printf("relesed\n");
 					msgRx.keyInput=0;
 					returnValue=0;
-				}	
+				}	*/
 		
 			}
 			else

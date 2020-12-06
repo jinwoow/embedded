@@ -40,7 +40,7 @@ int itemup()
 	
 	int itemplus=atoi(buf);
 	
-	textlcd("1","upgrade : %d",itemplus);
+	textlcd("1","upgrade");
     //printf("현재 강화 수 : %d\r\n",itemplus);
     fdpower=open("power.txt",O_RDWR);
 	if(fdpower==-1){
