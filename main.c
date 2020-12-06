@@ -49,7 +49,6 @@ void* DoSomeThing(void *arg)
     int cols = 0, rows = 0;
 	char *data;
 	//FrameBuffer init
-	textlcd("1","good");
     if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
 	{
 		printf ("FrameBuffer Init Failed\r\n");
@@ -63,7 +62,6 @@ void* DoSomeThing(void *arg)
 	//Clear FB.
 	fb_clear();
 	
-	textlcd("2","why");
 	//FileRead
 	int error=0;
 	struct jpeg_decompress_struct cinfo;
@@ -103,7 +101,8 @@ void* DoSomeThing(void *arg)
 		exit(1);
 	}
 	lseek(fdpower,(off_t)0,SEEK_SET);*/
-	textlcd("1","1. item upgrade 2.exit");
+	textlcd("1","1. item upgrade");
+	textlcd("2","2.exit");
 	//printf("1: 장비강화\r\n");
 	//printf("2: 종료\r\n");
     while(1){
@@ -120,7 +119,8 @@ void* DoSomeThing(void *arg)
 					switch(msgRx.keyInput)
 					{
 						case KEY_VOLUMEUP:
-										printf("1: 장비강화\r\n");
+										textlcd("1","input");
+										textlcd("2","item upgrade");
 										sleep(1);
 										itemup();
 										break;
