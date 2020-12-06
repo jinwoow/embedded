@@ -126,9 +126,11 @@ void* DoSomeThing(void *arg)
 												printf("%s\n",buff);
 												lseek(fditemp,(off_t)0,SEEK_CUR);
 										}
-										int upgrade=atoi(buff);
 										lseek(fditemp,(off_t)0,SEEK_SET);
-										printf("현재 강화된 수: %d\n",upgrade);
+										int upgrade=atoi(buff);
+										
+										printf("현재 강화된 수: %d\n",upgrade);	
+										
 										switch(upgrade){
 											case 9:
 														textlcd("1","knife+9");
