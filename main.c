@@ -39,7 +39,6 @@ void* DoSomeThing(void *arg)
 	int a;
 	int fdpower;
 	char buf[1024];
-	char buff[10];
 	off_t newpos;
 	ssize_t nread;
 	int cnt=0;
@@ -122,7 +121,7 @@ void* DoSomeThing(void *arg)
 												exit(1);
 										}
 										printf("현재 강화된 수 : ");
-										while(nread=read(fditemp,bufd,1)>0){
+										while(nread=read(fditemp,buff,1)>0){
 												printf("%s",buff);
 												lseek(fditemp,(off_t)0,SEEK_CUR);
 										}
@@ -130,6 +129,7 @@ void* DoSomeThing(void *arg)
 										lseek(fditemp,(off_t)0,SEEK_SET);
 										switch(upgrade){
 											case 9:
+													
 														//FrameBuffer init
    														if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
 														{		
