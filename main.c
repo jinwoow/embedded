@@ -49,7 +49,13 @@ void* DoSomeThing(void *arg)
 	//printf("1: 장비강화\r\n");
 	//printf("2: 종료\r\n");
     while(1){
-		buttonInit();
+		BUTTON_MSG_T msgRx;
+		int msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);//메시지큐
+		textlcd("1","1. item upgrade");
+		textlcd("2","2.exit");
+		while(1)
+		{
+			buttonInit();
 		int screen_width;
     int screen_height;
     int bits_per_pixel;
@@ -102,12 +108,8 @@ void* DoSomeThing(void *arg)
 	free(data);
 
 	fb_close();
-		BUTTON_MSG_T msgRx;
-		int msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);//메시지큐
-		textlcd("1","1. item upgrade");
-		textlcd("2","2.exit");
-		while(1)
-		{
+			textlcd("1","1. item upgrade");
+			textlcd("2","2.exit");
 			//printf("무엇을 선택하겠는가? ");
 			returnValue=msgrcv(msgID,&msgRx,8,0,IPC_NOWAIT);
 			if(returnValue>0)
