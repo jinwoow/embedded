@@ -116,20 +116,20 @@ void* DoSomeThing(void *arg)
 				{					
 					case KEY_VOLUMEUP:
 										
-										fditemp=open("itemp.txt",O_RDONLY);
+										fditemp=open("itemp.txt",O_RDWR);
 										if(fditemp==-1){
-												printf("fd itemp file open error!\n");
-												exit(1);
+											printf("file open error!\n");
+											exit(1);
 										}
-										printf("현재 강화된 수 : ");
-										while(nread=read(fditemp,buff,1)>0){
-												printf("%s\n",buff);
-												lseek(fditemp,(off_t)0,SEEK_CUR);
+	
+										while(nread=read(fditemp,buff,1024)>0){
+											printf("%s\n",buff);
+											lseek(fditemp,(off_t)0,SEEK_CUR);
 										}
 										lseek(fditemp,(off_t)0,SEEK_SET);
+	
 										int upgrade=atoi(buff);
-										
-										printf("현재 강화된 수: %d\n",upgrade);	
+										printf("%d\r\n",upgrade);	
 										
 										switch(upgrade){
 											case 9:
