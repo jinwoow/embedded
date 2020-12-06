@@ -42,21 +42,10 @@ void* DoSomeThing(void *arg)
 	int cnt=0;
 	char buff[10];
 	
-
-	textlcd("1","1. item upgrade");
-	textlcd("2","2.exit");
 	//lseek(fdpower,(off_t)0,SEEK_SET);
-	textlcd("1","1. item upgrade");
+	textlcd("1","1.item upgrade");
 	textlcd("2","2.exit");
-	//printf("1: 장비강화\r\n");
-	//printf("2: 종료\r\n");
-    while(1){
-		BUTTON_MSG_T msgRx;
-		int msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);//메시지큐
-		while(1)
-		{
-			buttonInit();
-			/*int screen_width;
+	int screen_width;
     		int screen_height;
     		int bits_per_pixel;
     		int line_length;
@@ -107,7 +96,13 @@ void* DoSomeThing(void *arg)
 			fb_write_reverse(data, cols,rows);
 			free(data);
 
-			fb_close();*/
+			fb_close();
+    while(1){
+		BUTTON_MSG_T msgRx;
+		int msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);//메시지큐
+		while(1)
+		{
+			buttonInit();
 
 			//printf("무엇을 선택하겠는가? ");
 
