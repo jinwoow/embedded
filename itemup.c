@@ -57,7 +57,7 @@ int itemup()
 	//printf("현재 전투력: %d\r\n",power);
 	
 	textlcd("2","1. challenge 2. out");
-	
+	/*
 	while(1){
 		buttonInit();
 		BUTTON_MSG_T msgRx;
@@ -232,9 +232,150 @@ int itemup()
 			;
 			}
 		}
-		break;
-	}
+	}*/
 	//printf("%d\n",a);
+	switch(itemplus){
+												case 1:
+														if(a>=0&&a<=9){
+															textlcd("1","SUCCESE !! power+100");
+															itemplus++;
+															sprintf(buff,"%d",itemplus);
+															write(fditemup,buff,sizeof(buff));
+															textlcd("2","strengthen : %d",itemplus);
+															power=power+100;
+															sprintf(buff,"%d",power);
+															write(fdpower,buff,sizeof(buff));
+															break;
+														}
+														else{
+															textlcd("1","fail");
+															break;
+														}
+		
+														case 2:	
+														if(a>=0&&a<=8){
+															textlcd("1","SUCCESE !! power+200");
+															itemplus++;
+															sprintf(buff,"%d",itemplus);
+															write(fditemup,buff,sizeof(buff));
+															textlcd("2","strengthen : %d",itemplus);
+															power=power+200;
+															sprintf(buff,"%d",power);
+															write(fdpower,buff,sizeof(buff));
+														break;
+														}
+														else{
+															textlcd("1","fail");
+															break;
+														}
+		
+														case 3:
+														if(a>=0&&a<=7){
+															textlcd("1","SUCCESE !! power+300");
+															itemplus++;
+															sprintf(buff,"%d",itemplus);
+															write(fditemup,buff,sizeof(buff));
+															textlcd("2","strengthen : %d",itemplus);
+															power=power+300;
+															sprintf(buff,"%d",power);
+															write(fdpower,buff,sizeof(buff));
+															break;
+														}
+														else{
+															textlcd("1","fail");
+															break;
+														}
+		
+														case 4:
+														if(a>=0&&a<=6){
+															textlcd("1","SUCCESE !! power+400");
+															itemplus++;
+															sprintf(buff,"%d",itemplus);
+															write(fditemup,buff,sizeof(buff));
+															textlcd("2","strengthen : %d",itemplus);
+															power=power+400;
+															sprintf(buff,"%d",power);
+	 												       write(fdpower,buff,sizeof(buff));
+															break;
+														}
+														else{
+															textlcd("1","fail");
+															break;
+														}
+		
+														case 5:
+														if(a>=0&&a<=5){
+															textlcd("1","SUCCESE !! power+500");
+															itemplus++;
+															sprintf(buff,"%d",itemplus);
+															write(fditemup,buff,sizeof(buff));
+															textlcd("2","strengthen : %d",itemplus);
+															power=power+500;
+															sprintf(buff,"%d",power);
+	   												     write(fdpower,buff,sizeof(buff));
+															break;
+														}
+														else{
+															textlcd("1","fail");
+															break;
+														}
+		
+														case 6:
+														if(a>=0&&a<=4){
+															textlcd("1","SUCCESE !! power+600");
+															itemplus++;
+															sprintf(buff,"%d",itemplus);
+															write(fditemup,buff,sizeof(buff));
+															textlcd("2","strengthen : %d",itemplus);
+															power=power+600;
+															sprintf(buff,"%d",power);
+	  												      write(fdpower,buff,sizeof(buff));
+															break;
+														}
+														else{
+															textlcd("1","fail");
+															break;
+														}
+		
+														case 7:
+														if(a>=0&&a<=3){
+															textlcd("1","SUCCESE !! power+700");
+															itemplus++;
+															sprintf(buff,"%d",itemplus);
+															write(fditemup,buff,sizeof(buff));
+															textlcd("2","strengthen : %d",itemplus);
+															power=power+700;
+															sprintf(buff,"%d",power);
+	     												   write(fdpower,buff,sizeof(buff));
+															break;
+														}
+														else{
+															textlcd("1","fail");
+															break;
+														}
+		
+														case 8:
+														if(a>=0&&a<=2){
+															textlcd("1","SUCCESE !! power+800");
+															itemplus++;
+															sprintf(buff,"%d",itemplus);
+															write(fditemup,buff,sizeof(buff));
+															textlcd("2","strengthen : %d",itemplus);
+															power=power+800;
+															sprintf(buff,"%d",power);
+	    												    write(fdpower,buff,sizeof(buff));
+															break;
+														}
+														else{
+															textlcd("1","fail");
+															break;
+														}
+		
+														case 9:
+															printf("더 이상 강화할수 없습니다.\r\n");
+															sleep(1);
+															break;
+														}
 	close(fditemup);
 	close(fdpower);
 	return 0;
