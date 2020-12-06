@@ -12,6 +12,7 @@ int power(void)
 	ssize_t nread;
 	int cnt=0;
 	char buff[10];
+	fndDisp(2222,0);
 	fdpower=open("power.txt",O_RDWR);
 	if(fdpower==-1){
 		printf("fdpower file open error!\n");
@@ -23,7 +24,6 @@ int power(void)
 		lseek(fdpower,(off_t)0,SEEK_CUR);
 	}
 	int power=atoi(buf);
-	fndDisp(2222,0);
 	while(1){
 		//cnt++;
 		sleep(1);
