@@ -112,6 +112,7 @@ void* DoSomeThing(void *arg)
 			textlcd("1","1. item upgrade");
 			textlcd("2","2.exit");
 			//printf("무엇을 선택하겠는가? ");
+			returnValue = 0;
 			returnValue=msgrcv(msgID,&msgRx,8,0,IPC_NOWAIT);
 			if(returnValue>0)
 			{
