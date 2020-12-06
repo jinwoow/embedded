@@ -114,6 +114,23 @@ void* DoSomeThing(void *arg)
 				switch(msgRx.keyInput)
 				{					
 					case KEY_VOLUMEUP:
+										char buf[1024];
+										fditemp=open("itemp.txt",O_RDONLY);
+										if(fditemp==-1){
+												printf("fd itemp file open error!\n");
+												exit(1);
+										}
+										printf("현재 강화된 수 : ");
+										while(nread=read(fditemp,buf,1)>0){
+												printf("%s",buf);
+												lseek(fditemp,(off_t)0,SEEK_CUR);
+										}
+										int upgrade=atoi(buf);
+										lseek(fditemp,(off_t)0,SEEK_SET);
+										switch(upgrade){
+											case 1:
+												
+										close(fditemp);
 										break;
 					case KEY_HOME: 
 										/*textlcd("1","bye");
@@ -132,12 +149,12 @@ void* DoSomeThing(void *arg)
 										textlcd("2","item upgrade");
 										sleep(1);
 											//FrameBuffer init
- 									   int screen_width;
+										int screen_width;
 										int screen_height;
 										int bits_per_pixel;
-   									   int line_length;
-   									   int cols = 0, rows = 0;
-									   char *data;
+										int line_length;
+										int cols = 0, rows = 0;
+										char *data;
 									   //FrameBuffer init
 										if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
 									   {		
