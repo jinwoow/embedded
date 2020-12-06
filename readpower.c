@@ -11,8 +11,7 @@ int power(void)
 	off_t newpos;
 	ssize_t nread;
 	int cnt=0;
-	char buff[10];
-	fndDisp(2222,0);
+	char buff[6];
 	fdpower=open("power.txt",O_RDWR);
 	if(fdpower==-1){
 		printf("fdpower file open error!\n");

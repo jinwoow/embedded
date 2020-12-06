@@ -29,7 +29,6 @@ pthread_mutex_t lock;
 
 void* doSomeThing(void *arg)
 {
-	textlcd("1","why?");
     power();
 }
 
@@ -50,6 +49,7 @@ void* DoSomeThing(void *arg)
     int cols = 0, rows = 0;
 	char *data;
 	//FrameBuffer init
+	textlcd("1","good");
     if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
 	{
 		printf ("FrameBuffer Init Failed\r\n");
@@ -63,7 +63,7 @@ void* DoSomeThing(void *arg)
 	//Clear FB.
 	fb_clear();
 	
-	
+	textlcd("2","why");
 	//FileRead
 	int error=0;
 	struct jpeg_decompress_struct cinfo;
@@ -97,12 +97,12 @@ void* DoSomeThing(void *arg)
 
 	fb_close();
 
-	fdpower=open("power.txt",O_RDWR);
+	/*fdpower=open("power.txt",O_RDWR);
 	if(fdpower==-1){
 		printf("file open error!\n");
 		exit(1);
 	}
-	lseek(fdpower,(off_t)0,SEEK_SET);
+	lseek(fdpower,(off_t)0,SEEK_SET);*/
 	textlcd("1","1. item upgrade 2.exit");
 	//printf("1: 장비강화\r\n");
 	//printf("2: 종료\r\n");
@@ -112,7 +112,7 @@ void* DoSomeThing(void *arg)
 		int msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);//메시지큐
 		while(1)
 		{
-			printf("무엇을 선택하겠는가? ");
+			//printf("무엇을 선택하겠는가? ");
 			returnValue=msgrcv(msgID,&msgRx,8,0,IPC_NOWAIT);
 			if(returnValue>0)
 			{
@@ -150,7 +150,6 @@ int main(void)
 	item();
 	itemp();
 	printf("\r\n");
-	power();
 	
 	int err;
     while(1)
