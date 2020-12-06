@@ -29,6 +29,7 @@ pthread_mutex_t lock;
 
 void* doSomeThing(void *arg)
 {
+	textlcd("1","why?");
     power();
 }
 
@@ -149,7 +150,6 @@ int main(void)
 	item();
 	itemp();
 	printf("\r\n");
-	textlcd("1","wwwwhhhhyyyy");
 	
 	int err;
     while(1)
