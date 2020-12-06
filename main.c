@@ -181,6 +181,15 @@ void* DoSomeThing(void *arg)
 						case KEY_MENU: printf("Menu key:"); break;
 						case KEY_VOLUMEDOWN: printf("Volume down key:"); break;
 					}
+					if(msgRx.pressed)
+						printf("pressed\n\r");
+					}
+					else
+					{
+						printf("relesed\n");
+						msgRx.keyInput=0;
+						returnValue=0;
+					}	
 				}
 			else
 			;
