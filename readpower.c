@@ -23,6 +23,7 @@ int power()
 		lseek(fdpower,(off_t)0,SEEK_CUR);
 	}
 	int power=atoi(buf);
+	fndDisp(2222,0);
 	while(1){
 		//cnt++;
 		sleep(1);
