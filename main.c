@@ -164,11 +164,7 @@ void* DoSomeThing(void *arg)
 										jpeg_finish_decompress(&cinfo);
 										jpeg_destroy_decompress(&cinfo);
 										fclose(fp);
-
-										fb_write_reverse(data, cols,rows);
-										free(data);
-
-										fb_close();
+										
 										textlcd("1","input");
 										textlcd("2","item upgrade");
 										sleep(1);
@@ -176,25 +172,25 @@ void* DoSomeThing(void *arg)
 										
 										FILE *fP = fopen("test.jpg", "rb");
 										jpeg_stdio_src(&cinfo, fP);
-	jpeg_read_header(&cinfo, TRUE); 
-	//printf ("JPG %d by %d by %d, %d\n",
-	//	cinfo.image_width,cinfo.image_height,cinfo.num_components, cinfo.output_scanline);
-	cols = cinfo.image_width;
-	rows = cinfo.image_height;
+										jpeg_read_header(&cinfo, TRUE); 
+										//printf ("JPG %d by %d by %d, %d\n",
+										//	cinfo.image_width,cinfo.image_height,cinfo.num_components, cinfo.output_scanline);
+										cols = cinfo.image_width;
+										rows = cinfo.image_height;
 		
-	data = malloc(cols*rows*3);
-	int currpoint = 0;
-	jpeg_start_decompress(&cinfo);
-	while(cinfo.output_scanline < cinfo.output_height) 
-	{
-		//printf ("CInfoScanlines:%d\r\n",cinfo.output_scanline);
-		char *tempPtr=&data[currpoint];
-		jpeg_read_scanlines(&cinfo, (JSAMPARRAY)&tempPtr, 1);
-		currPoint+=cols*3;
-	}
-	jpeg_finish_decompress(&cinfo);
-	jpeg_destroy_decompress(&cinfo);
-	fclose(fP);
+										data = malloc(cols*rows*3);
+										int currpoint = 0;
+										jpeg_start_decompress(&cinfo);
+										while(cinfo.output_scanline < cinfo.output_height) 
+										{
+											//printf ("CInfoScanlines:%d\r\n",cinfo.output_scanline);
+											char *tempPtr=&data[currpoint];
+											jpeg_read_scanlines(&cinfo, (JSAMPARRAY)&tempPtr, 1);
+											currPoint+=cols*3;
+										}
+										jpeg_finish_decompress(&cinfo);
+										jpeg_destroy_decompress(&cinfo);
+										fclose(fP);
 										textlcd("1","input");
 										textlcd("2","item upgrade");
 										break;
