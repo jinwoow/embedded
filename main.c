@@ -198,7 +198,7 @@ void* DoSomeThing(void *arg)
 			}
 		}
 	}
-}
+
 
 
 int main(void)

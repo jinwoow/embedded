@@ -57,7 +57,7 @@ int itemup()
 	//printf("현재 전투력: %d\r\n",power);
 	
 	textlcd("2","i can do it");
-	sleep(4)
+	sleep(4);
 	/*
 	while(1){
 		buttonInit();
