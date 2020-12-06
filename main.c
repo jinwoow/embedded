@@ -150,6 +150,7 @@ int main(void)
 	item();
 	itemp();
 	printf("\r\n");
+	power();
 	
 	int err;
     while(1)
