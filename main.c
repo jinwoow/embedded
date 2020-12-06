@@ -56,7 +56,7 @@ void* DoSomeThing(void *arg)
 		while(1)
 		{
 			buttonInit();
-			int screen_width;
+			/*int screen_width;
     		int screen_height;
     		int bits_per_pixel;
     		int line_length;
@@ -107,12 +107,12 @@ void* DoSomeThing(void *arg)
 			fb_write_reverse(data, cols,rows);
 			free(data);
 
-			fb_close();
+			fb_close();*/
 
 			textlcd("1","1. item upgrade");
 			textlcd("2","2.exit");
 			//printf("무엇을 선택하겠는가? ");
-			returnValue = 0;
+
 			returnValue=msgrcv(msgID,&msgRx,8,0,IPC_NOWAIT);
 			if(returnValue>0)
 			{
@@ -121,8 +121,21 @@ void* DoSomeThing(void *arg)
 					{
 						
 						case KEY_VOLUMEUP:
+										break;
+						case KEY_HOME: 
+										/*textlcd("1","bye");
+										while(nread=read(fdpower,buf,1024)>0){
+										printf("%s\r\n",buf);
+										lseek(fdpower,(off_t)0,SEEK_CUR);
+										}
+										exit(1);*/
+										break;
+						case KEY_SEARCH: printf("Search key:"); break;
+						case KEY_BACK: printf("Back key:"); break;
+						case KEY_MENU: printf("Menu key:"); break;
+						case KEY_VOLUMEDOWN:
 											//FrameBuffer init
- 									   if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
+ 									   /*if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
 										{
 											printf ("FrameBuffer Init Failed\r\n");
 											return 0;
@@ -166,26 +179,13 @@ void* DoSomeThing(void *arg)
 										fb_write_reverse(data, cols,rows);
 										free(data);
 
-										fb_close();
+										fb_close();*/
 										textlcd("1","input");
 										textlcd("2","item upgrade");
 										sleep(1);
 										itemup();
 										msgRx.keyInput=0;
-										returnValue=0;
-										break;
-						case KEY_HOME: 
-										/*textlcd("1","bye");
-										while(nread=read(fdpower,buf,1024)>0){
-										printf("%s\r\n",buf);
-										lseek(fdpower,(off_t)0,SEEK_CUR);
-										}
-										exit(1);*/
-										break;
-						case KEY_SEARCH: printf("Search key:"); break;
-						case KEY_BACK: printf("Back key:"); break;
-						case KEY_MENU: printf("Menu key:"); break;
-						case KEY_VOLUMEDOWN: printf("Volume down key:"); break;
+										returnValue=0;break;
 					}
 					if(msgRx.pressed)
 					printf("pressed\n\r");
