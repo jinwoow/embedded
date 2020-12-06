@@ -43,6 +43,8 @@ void* DoSomeThing(void *arg)
 	char buff[10];
 	
 
+	textlcd("1","1. item upgrade");
+	textlcd("2","2.exit");
 	//lseek(fdpower,(off_t)0,SEEK_SET);
 	textlcd("1","1. item upgrade");
 	textlcd("2","2.exit");
@@ -51,8 +53,6 @@ void* DoSomeThing(void *arg)
     while(1){
 		BUTTON_MSG_T msgRx;
 		int msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);//메시지큐
-		textlcd("1","1. item upgrade");
-		textlcd("2","2.exit");
 		while(1)
 		{
 			buttonInit();
@@ -109,8 +109,6 @@ void* DoSomeThing(void *arg)
 
 			fb_close();*/
 
-			textlcd("1","1. item upgrade");
-			textlcd("2","2.exit");
 			//printf("무엇을 선택하겠는가? ");
 
 			returnValue=msgrcv(msgID,&msgRx,8,0,IPC_NOWAIT);
