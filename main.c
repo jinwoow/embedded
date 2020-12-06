@@ -130,6 +130,7 @@ void* DoSomeThing(void *arg)
 										printf("%s\r\n",buf);
 										lseek(fdpower,(off_t)0,SEEK_CUR);
 										}
+										exit(1);
 										break;
 						case KEY_SEARCH: printf("Search key:"); break;
 						case KEY_BACK: printf("Back key:"); break;

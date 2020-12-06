@@ -278,12 +278,14 @@ int itemup()
 						case KEY_VOLUMEDOWN:
 										break;
 					}
+					break;
 				}
 			else
 			;
 			}
 		}
-	}
+		break;
+	}break;
 	//printf("%d\n",a);
 	close(fditemup);
 	close(fdpower);
