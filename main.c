@@ -121,13 +121,7 @@ void* DoSomeThing(void *arg)
 										sleep(1);
 										itemup();
 										textlcd("1","1.item upgrade");
-	textlcd("2","2.exit");
-	int screen_width;
-    int screen_height;
-   	int bits_per_pixel;
-   	int line_length;
-   	int cols = 0, rows = 0;
-	char *data;
+										textlcd("2","2.exit");
 	//FrameBuffer init
    	if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
 	{		
