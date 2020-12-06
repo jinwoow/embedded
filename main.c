@@ -149,6 +149,7 @@ int main(void)
 	item();
 	itemp();
 	printf("\r\n");
+	fndDisp(1111,0);
 	int err;
     while(1)
     {
