@@ -34,6 +34,7 @@ void* doSomeThing(void *arg)
 
 void* DoSomeThing(void *arg)
 {
+	buttonInit();
 	int a;
 	int fdpower;
 	char buf[1024];
@@ -41,6 +42,8 @@ void* DoSomeThing(void *arg)
 	ssize_t nread;
 	int cnt=0;
 	char buff[10];
+	BUTTON_MSG_T msgRx;
+	int msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);//메시지큐
 	
 	//lseek(fdpower,(off_t)0,SEEK_SET);
 	textlcd("1","1.item upgrade");
@@ -97,13 +100,8 @@ void* DoSomeThing(void *arg)
 			free(data);
 
 			fb_close();
-    while(1){
-		BUTTON_MSG_T msgRx;
-		int msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);//메시지큐
 		while(1)
 		{
-			buttonInit();
-
 			//printf("무엇을 선택하겠는가? ");
 
 			returnValue=msgrcv(msgID,&msgRx,8,0,IPC_NOWAIT);
@@ -193,7 +191,7 @@ void* DoSomeThing(void *arg)
 			}
 			else
 			;
-		}
+		
 	}
 }
 

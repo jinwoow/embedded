@@ -24,6 +24,7 @@ char inputDevPath[200]={0,};
 
 int buttonInit(void)
 {
+	printf("buttoninitstart!\n");
 //if (probeButtonPath(buttonPath) == 0)
 //return 0;
 //fd=open (buttonPath, O_RDONLY);  //노드 열기
