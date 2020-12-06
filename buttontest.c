@@ -26,7 +26,7 @@ int main(void)
 		if((msgRx.keyInput>0)&&(msgRx.pressed>0)){
 			switch(msgRx.keyInput)
 			{
-				case KEY_VOLUMEUP: printf("Volume up key:"); break;
+				case KEY_VOLUMEUP: printf("Volume up key:"); break; 
 				case KEY_HOME: printf("Home key:"); break;
 				case KEY_SEARCH: printf("Search key:"); break;
 				case KEY_BACK: printf("Back key:"); break;
