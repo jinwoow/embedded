@@ -95,11 +95,6 @@ void* DoSomeThing(void *arg)
 
 	fb_close();
 
-	/*fdpower=open("power.txt",O_RDWR);
-	if(fdpower==-1){
-		printf("file open error!\n");
-		exit(1);
-	}
 	lseek(fdpower,(off_t)0,SEEK_SET);*/
 	textlcd("1","1. item upgrade");
 	textlcd("2","2.exit");
@@ -109,6 +104,8 @@ void* DoSomeThing(void *arg)
 		buttonInit();
 		BUTTON_MSG_T msgRx;
 		int msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);//메시지큐
+		textlcd("1","1. item upgrade");
+		textlcd("2","2.exit")
 		while(1)
 		{
 			//printf("무엇을 선택하겠는가? ");
@@ -118,8 +115,9 @@ void* DoSomeThing(void *arg)
 				if((msgRx.keyInput>0)&&(msgRx.pressed>0)){
 					switch(msgRx.keyInput)
 					{
+						
 						case KEY_VOLUMEUP:
-										
+										/*
 										//FrameBuffer init
  									   if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
 										{
@@ -165,7 +163,7 @@ void* DoSomeThing(void *arg)
 										fb_write_reverse(data, cols,rows);
 										free(data);
 
-										fb_close();
+										fb_close();*/
 										textlcd("1","input");
 										textlcd("2","item upgrade");
 										sleep(1);
