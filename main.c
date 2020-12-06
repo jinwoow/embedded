@@ -6,6 +6,17 @@
 #include <pthread.h>
 #include <sys/shm.h>
 #include <sys/msg.h>
+#include <sys/kd.h>
+#include <sys/ioctl.h>
+#include <fcntl.h>
+#include "../libfbdev/libfbdev.h"
+#include "../libjpeg/jpeglib.h"
+#include <linux/input.h>
+#include <sys/stat.h>
+#include "button.h"
+#define MESSAGE_ID 1122
+static int returnValue =0;
+
 
 #define SIZE 201
 
@@ -19,6 +30,23 @@ pthread_mutex_t lock;
 void* doSomeThing(void *arg)
 {
     power();
+    int fdpower;
+	char buf[1024];
+	off_t newpos;
+	ssize_t nread;
+	int cnt=0;
+	char buff[10];
+	fdpower=open("power.txt",O_RDWR);
+	if(fdpower==-1){
+		printf("file open error!\n");
+		exit(1);
+	}
+	nread=read(fdpower,buf,1024);
+	int Power=atoi(buf);
+	fndDisp(Power,0);
+	//printf("%d\r\n",power);
+	lseek(fdpower,(off_t)0,SEEK_SET);
+	close(fdpower);
 }
 
 void* DoSomeThing(void *arg)
@@ -30,6 +58,61 @@ void* DoSomeThing(void *arg)
 	ssize_t nread;
 	int cnt=0;
 	char buff[10];
+	
+    int screen_width;
+    int screen_height;
+    int bits_per_pixel;
+    int line_length;
+    int cols = 0, rows = 0;
+	char *data;
+	//FrameBuffer init
+    if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
+	{
+		printf ("FrameBuffer Init Failed\r\n");
+		return 0;
+	}
+	
+	int conFD = open ("/dev/tty0", O_RDWR);
+	ioctl(conFD, KDSETMODE, KD_GRAPHICS);
+	close (conFD);
+	
+	//Clear FB.
+	fb_clear();
+	
+	
+	//FileRead
+	int error=0;
+	struct jpeg_decompress_struct cinfo;
+	struct jpeg_error_mgr jerr;
+ 	cinfo.err = jpeg_std_error(&jerr);
+	jpeg_create_decompress(&cinfo);
+	FILE *fp = fopen("test.jpg", "rb");
+	jpeg_stdio_src(&cinfo, fp);
+	jpeg_read_header(&cinfo, TRUE); 
+	//printf ("JPG %d by %d by %d, %d\n",
+	//	cinfo.image_width,cinfo.image_height,cinfo.num_components, cinfo.output_scanline);
+	cols = cinfo.image_width;
+	rows = cinfo.image_height;
+
+	data = malloc(cols*rows*3);
+	int currPoint = 0;
+	jpeg_start_decompress(&cinfo);
+	while(cinfo.output_scanline < cinfo.output_height) 
+	{
+		//printf ("CInfoScanlines:%d\r\n",cinfo.output_scanline);
+		char *tempPtr=&data[currPoint];
+		jpeg_read_scanlines(&cinfo, (JSAMPARRAY)&tempPtr, 1);
+		currPoint+=cols*3;
+	}
+	jpeg_finish_decompress(&cinfo);
+	jpeg_destroy_decompress(&cinfo);
+	fclose(fp);
+
+	fb_write_reverse(data, cols,rows);
+	free(data);
+
+	fb_close();
+
 	fdpower=open("power.txt",O_RDWR);
 	if(fdpower==-1){
 		printf("file open error!\n");
@@ -39,25 +122,44 @@ void* DoSomeThing(void *arg)
 	//printf("1: 장비강화\r\n");
 	//printf("2: 종료\r\n");
     while(1){
-		printf("1: 장비강화\r\n");
-	    printf("2: 종료\r\n");
-		printf("무엇을 선택하겠는가? ");
-		scanf("%d",&a);
-        if(a==1){
-            itemup();
-        }
-        else if(a==2){
-			printf("프로그램을 종료합니다\r\n");
-			printf("어플 종료시 전투력 : ");
-	        while(nread=read(fdpower,buf,1024)>0){
-		    printf("%s\r\n",buf);
-		    lseek(fdpower,(off_t)0,SEEK_CUR);
-	        }
-            exit(0);
-        }
-    }
+		buttonInit();
+		BUTTON_MSG_T msgRx;
+		int msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);//메시지큐
+		while(1)
+		{
+			printf("무엇을 선택하겠는가? ");
+			returnValue=msgrcv(msgID,&msgRx,8,0,IPC_NOWAIT);
+			if(returnValue>0)
+			{
+				if((msgRx.keyInput>0)&&(msgRx.pressed>0)){
+					switch(msgRx.keyInput)
+					{
+						case KEY_VOLUMEUP:
+										printf("1: 장비강화\r\n");
+										itemup();
+										break;
+						case KEY_HOME: 
+										printf("2: 종료\r\n");
+										printf("프로그램을 종료합니다\r\n");
+										printf("어플 종료시 전투력 : ");
+										while(nread=read(fdpower,buf,1024)>0){
+										printf("%s\r\n",buf);
+										lseek(fdpower,(off_t)0,SEEK_CUR);
+										}
+										break;
+						case KEY_SEARCH: printf("Search key:"); break;
+						case KEY_BACK: printf("Back key:"); break;
+						case KEY_MENU: printf("Menu key:"); break;
+						case KEY_VOLUMEDOWN: printf("Volume down key:"); break;
+					}
+				}
+			else
+			;
+			}
+		}
+	}
 }
- 
+
 
 int main(void)
 {
@@ -78,3 +180,4 @@ int main(void)
    }
 	return 0;
 }
+

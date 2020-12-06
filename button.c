@@ -14,7 +14,7 @@
 #define PROBE_FILE "/proc/bus/input/devices"
 #define HAVE_TO_FIND_1 "N: Name=\"ecube-button\"\n"
 #define HAVE_TO_FIND_2 "H: Handlers=kbd event"
-#define MESSAGE_ID 999
+#define MESSAGE_ID 1122
 
 char buttonPath;
 static int fd=0;
@@ -22,7 +22,7 @@ int msgID=0;
 static pthread_t buttonTh_id;
 char inputDevPath[200]={0,};
 
-int startbutton(void)
+int buttonInit(void)
 {
 	
 	if(probeButtonPath(inputDevPath)==0)
@@ -86,15 +86,13 @@ static void *buttonThFunc(void*a)
       read(fd,&stEvent,16);
       //printf("EV_KEY=%d\n\r",EV_KEY);
       //if((stEvent.type==EV_KEY)&&(stEvent.value>0))    //키가눌리면
-      if(stEvent.value)
+      if(stEvent.type)
       {
-		  if(stEvent.value==0);
-		  {
-				msgTx.keyInput=stEvent.code;
-				msgsnd(msgID,&msgTx,4,0);
-			}
+         msgTx.keyInput=stEvent.code;
+         msgTx.pressed=stEvent.value;
+         msgsnd(msgID,&msgTx,8,0);
       }
       else
       ;
    }
-} 
+}
