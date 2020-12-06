@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 
-int power()
+int power(void)
 {
 	int fdpower;
 	char buf[1024];

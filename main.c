@@ -102,6 +102,7 @@ void* DoSomeThing(void *arg)
 		exit(1);
 	}
 	lseek(fdpower,(off_t)0,SEEK_SET);
+	textlcd("1","1. item upgrade 2.exit");
 	//printf("1: 장비강화\r\n");
 	//printf("2: 종료\r\n");
     while(1){
@@ -110,7 +111,6 @@ void* DoSomeThing(void *arg)
 		int msgID = msgget (MESSAGE_ID, IPC_CREAT|0666);//메시지큐
 		while(1)
 		{
-			textlcd("1","1. item upgrade 2.exit");
 			printf("무엇을 선택하겠는가? ");
 			returnValue=msgrcv(msgID,&msgRx,8,0,IPC_NOWAIT);
 			if(returnValue>0)
@@ -149,7 +149,8 @@ int main(void)
 	item();
 	itemp();
 	printf("\r\n");
-	fndDisp(1111,0);
+	textlcd("1","wwwwhhhhyyyy");
+	
 	int err;
     while(1)
     {
