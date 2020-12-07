@@ -82,7 +82,7 @@ int itemup()
 														}
 														else{
 															textlcd("1","fail");
-															colarled("50","0","0");
+															colarled("0","0","50");
 															sleep(2);
 															colarled("0","0","0");
 															break;
@@ -104,7 +104,7 @@ int itemup()
 														break;
 														}
 														else{
-															colarled("50","0","0");
+															colarled("0","0","50");
 															textlcd("1","fail");
 															sleep(2);
 															colarled("0","0","0");
@@ -127,7 +127,7 @@ int itemup()
 															break;
 														}
 														else{
-															colarled("50","0","0");
+															colarled("0","0","50");
 															textlcd("1","fail");
 															sleep(2);
 															colarled("0","0","0");
@@ -150,7 +150,7 @@ int itemup()
 															break;
 														}
 														else{
-															colarled("50","0","0");
+															colarled("50","0","50");
 															textlcd("1","fail");
 															sleep(2);
 															colarled("0","0","0");
@@ -173,7 +173,7 @@ int itemup()
 															break;
 														}
 														else{
-															colarled("50","0","0");
+															colarled("0","0","50");
 															textlcd("1","fail");
 															sleep(2);
 															colarled("0","0","0");
@@ -196,7 +196,7 @@ int itemup()
 															break;
 														}
 														else{
-															colarled("50","0","0");
+															colarled("0","0","50");
 															textlcd("1","fail");
 															sleep(2);
 															colarled("0","0","0");
@@ -219,7 +219,7 @@ int itemup()
 															break;
 														}
 														else{
-															colarled("50","0","0");
+															colarled("0","0","50");
 															textlcd("1","fail");
 															sleep(2);
 															colarled("0","0","0");
@@ -242,7 +242,7 @@ int itemup()
 															break;
 														}
 														else{
-															colarled("50","0","0");
+															colarled("0","0","50");
 															textlcd("1","fail");
 															sleep(2);
 															colarled("0","0","0");
@@ -253,6 +253,7 @@ int itemup()
 															textlcd("1","Don't be greedy.");
 															printf("더 이상 강화할수 없습니다.\r\n");
 															colarled("50","0","0");
+															colarled("0","0","50");
 															sleep(2);
 															colarled("0","0","0");
 															break;
