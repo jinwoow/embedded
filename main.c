@@ -132,6 +132,414 @@ void* DoSomeThing(void *arg)
 										printf("%d\r\n",upgrade);	
 										
 										switch(upgrade){
+                            case 1:
+														textlcd("1","knife+1");
+														//FrameBuffer init
+   														if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
+														{		
+															printf ("FrameBuffer Init Failed\r\n");
+															return 0;
+														}
+					
+														conFD = open ("/dev/tty0", O_RDWR);
+														ioctl(conFD, KDSETMODE, KD_GRAPHICS);
+														close (conFD);
+						
+														//Clear FB.
+														fb_clear();
+	
+														//FileRead
+														error=0;
+														cinfo.err = jpeg_std_error(&jerr);
+														jpeg_create_decompress(&cinfo);
+	
+					
+														fp = fopen("upgrade1.jpg", "rb");
+														jpeg_stdio_src(&cinfo, fp);
+														jpeg_read_header(&cinfo, TRUE); 
+														//printf ("JPG %d by %d by %d, %d\n",
+														//	cinfo.image_width,cinfo.image_height,cinfo.num_components, cinfo.output_scanline);
+														cols = cinfo.image_width;
+														rows = cinfo.image_height;
+																				
+														data = malloc(cols*rows*3);
+														currPoint = 0;
+														jpeg_start_decompress(&cinfo);
+														while(cinfo.output_scanline < cinfo.output_height) 
+														{
+															//printf ("CInfoScanlines:%d\r\n",cinfo.output_scanline);
+															char *tempPtr=&data[currPoint];
+															jpeg_read_scanlines(&cinfo, (JSAMPARRAY)&tempPtr, 1);
+															currPoint+=cols*3;
+														}
+														jpeg_finish_decompress(&cinfo);
+														jpeg_destroy_decompress(&cinfo);
+														fclose(fp);
+														fb_write_reverse(data, cols,rows);
+														free(data);
+
+														fb_close();
+																
+														close(fditemp);
+														break;
+													}
+                            case 2:
+														textlcd("1","knife+2");
+														//FrameBuffer init
+   														if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
+														{		
+															printf ("FrameBuffer Init Failed\r\n");
+															return 0;
+														}
+					
+														conFD = open ("/dev/tty0", O_RDWR);
+														ioctl(conFD, KDSETMODE, KD_GRAPHICS);
+														close (conFD);
+						
+														//Clear FB.
+														fb_clear();
+	
+														//FileRead
+														error=0;
+														cinfo.err = jpeg_std_error(&jerr);
+														jpeg_create_decompress(&cinfo);
+	
+					
+														fp = fopen("upgrade2.jpg", "rb");
+														jpeg_stdio_src(&cinfo, fp);
+														jpeg_read_header(&cinfo, TRUE); 
+														//printf ("JPG %d by %d by %d, %d\n",
+														//	cinfo.image_width,cinfo.image_height,cinfo.num_components, cinfo.output_scanline);
+														cols = cinfo.image_width;
+														rows = cinfo.image_height;
+																				
+														data = malloc(cols*rows*3);
+														currPoint = 0;
+														jpeg_start_decompress(&cinfo);
+														while(cinfo.output_scanline < cinfo.output_height) 
+														{
+															//printf ("CInfoScanlines:%d\r\n",cinfo.output_scanline);
+															char *tempPtr=&data[currPoint];
+															jpeg_read_scanlines(&cinfo, (JSAMPARRAY)&tempPtr, 1);
+															currPoint+=cols*3;
+														}
+														jpeg_finish_decompress(&cinfo);
+														jpeg_destroy_decompress(&cinfo);
+														fclose(fp);
+														fb_write_reverse(data, cols,rows);
+														free(data);
+
+														fb_close();
+																
+														close(fditemp);
+														break;
+													}
+                            case 3:
+														textlcd("1","knife+3");
+														//FrameBuffer init
+   														if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
+														{		
+															printf ("FrameBuffer Init Failed\r\n");
+															return 0;
+														}
+					
+														conFD = open ("/dev/tty0", O_RDWR);
+														ioctl(conFD, KDSETMODE, KD_GRAPHICS);
+														close (conFD);
+						
+														//Clear FB.
+														fb_clear();
+	
+														//FileRead
+														error=0;
+														cinfo.err = jpeg_std_error(&jerr);
+														jpeg_create_decompress(&cinfo);
+	
+					
+														fp = fopen("upgrade3.jpg", "rb");
+														jpeg_stdio_src(&cinfo, fp);
+														jpeg_read_header(&cinfo, TRUE); 
+														//printf ("JPG %d by %d by %d, %d\n",
+														//	cinfo.image_width,cinfo.image_height,cinfo.num_components, cinfo.output_scanline);
+														cols = cinfo.image_width;
+														rows = cinfo.image_height;
+																				
+														data = malloc(cols*rows*3);
+														currPoint = 0;
+														jpeg_start_decompress(&cinfo);
+														while(cinfo.output_scanline < cinfo.output_height) 
+														{
+															//printf ("CInfoScanlines:%d\r\n",cinfo.output_scanline);
+															char *tempPtr=&data[currPoint];
+															jpeg_read_scanlines(&cinfo, (JSAMPARRAY)&tempPtr, 1);
+															currPoint+=cols*3;
+														}
+														jpeg_finish_decompress(&cinfo);
+														jpeg_destroy_decompress(&cinfo);
+														fclose(fp);
+														fb_write_reverse(data, cols,rows);
+														free(data);
+
+														fb_close();
+																
+														close(fditemp);
+														break;
+													}
+                            case 4:
+														textlcd("1","knife+4");
+														//FrameBuffer init
+   														if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
+														{		
+															printf ("FrameBuffer Init Failed\r\n");
+															return 0;
+														}
+					
+														conFD = open ("/dev/tty0", O_RDWR);
+														ioctl(conFD, KDSETMODE, KD_GRAPHICS);
+														close (conFD);
+						
+														//Clear FB.
+														fb_clear();
+	
+														//FileRead
+														error=0;
+														cinfo.err = jpeg_std_error(&jerr);
+														jpeg_create_decompress(&cinfo);
+	
+					
+														fp = fopen("upgrade4.jpg", "rb");
+														jpeg_stdio_src(&cinfo, fp);
+														jpeg_read_header(&cinfo, TRUE); 
+														//printf ("JPG %d by %d by %d, %d\n",
+														//	cinfo.image_width,cinfo.image_height,cinfo.num_components, cinfo.output_scanline);
+														cols = cinfo.image_width;
+														rows = cinfo.image_height;
+																				
+														data = malloc(cols*rows*3);
+														currPoint = 0;
+														jpeg_start_decompress(&cinfo);
+														while(cinfo.output_scanline < cinfo.output_height) 
+														{
+															//printf ("CInfoScanlines:%d\r\n",cinfo.output_scanline);
+															char *tempPtr=&data[currPoint];
+															jpeg_read_scanlines(&cinfo, (JSAMPARRAY)&tempPtr, 1);
+															currPoint+=cols*3;
+														}
+														jpeg_finish_decompress(&cinfo);
+														jpeg_destroy_decompress(&cinfo);
+														fclose(fp);
+														fb_write_reverse(data, cols,rows);
+														free(data);
+
+														fb_close();
+																
+														close(fditemp);
+														break;
+													}
+                            case 5:
+														textlcd("1","knife+5");
+														//FrameBuffer init
+   														if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
+														{		
+															printf ("FrameBuffer Init Failed\r\n");
+															return 0;
+														}
+					
+														conFD = open ("/dev/tty0", O_RDWR);
+														ioctl(conFD, KDSETMODE, KD_GRAPHICS);
+														close (conFD);
+						
+														//Clear FB.
+														fb_clear();
+	
+														//FileRead
+														error=0;
+														cinfo.err = jpeg_std_error(&jerr);
+														jpeg_create_decompress(&cinfo);
+	
+					
+														fp = fopen("upgrade5.jpg", "rb");
+														jpeg_stdio_src(&cinfo, fp);
+														jpeg_read_header(&cinfo, TRUE); 
+														//printf ("JPG %d by %d by %d, %d\n",
+														//	cinfo.image_width,cinfo.image_height,cinfo.num_components, cinfo.output_scanline);
+														cols = cinfo.image_width;
+														rows = cinfo.image_height;
+																				
+														data = malloc(cols*rows*3);
+														currPoint = 0;
+														jpeg_start_decompress(&cinfo);
+														while(cinfo.output_scanline < cinfo.output_height) 
+														{
+															//printf ("CInfoScanlines:%d\r\n",cinfo.output_scanline);
+															char *tempPtr=&data[currPoint];
+															jpeg_read_scanlines(&cinfo, (JSAMPARRAY)&tempPtr, 1);
+															currPoint+=cols*3;
+														}
+														jpeg_finish_decompress(&cinfo);
+														jpeg_destroy_decompress(&cinfo);
+														fclose(fp);
+														fb_write_reverse(data, cols,rows);
+														free(data);
+
+														fb_close();
+																
+														close(fditemp);
+														break;
+													}
+                        case 6:
+														textlcd("1","knife+6");
+														//FrameBuffer init
+   														if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
+														{		
+															printf ("FrameBuffer Init Failed\r\n");
+															return 0;
+														}
+					
+														conFD = open ("/dev/tty0", O_RDWR);
+														ioctl(conFD, KDSETMODE, KD_GRAPHICS);
+														close (conFD);
+						
+														//Clear FB.
+														fb_clear();
+	
+														//FileRead
+														error=0;
+														cinfo.err = jpeg_std_error(&jerr);
+														jpeg_create_decompress(&cinfo);
+	
+					
+														fp = fopen("upgrade6.jpg", "rb");
+														jpeg_stdio_src(&cinfo, fp);
+														jpeg_read_header(&cinfo, TRUE); 
+														//printf ("JPG %d by %d by %d, %d\n",
+														//	cinfo.image_width,cinfo.image_height,cinfo.num_components, cinfo.output_scanline);
+														cols = cinfo.image_width;
+														rows = cinfo.image_height;
+																				
+														data = malloc(cols*rows*3);
+														currPoint = 0;
+														jpeg_start_decompress(&cinfo);
+														while(cinfo.output_scanline < cinfo.output_height) 
+														{
+															//printf ("CInfoScanlines:%d\r\n",cinfo.output_scanline);
+															char *tempPtr=&data[currPoint];
+															jpeg_read_scanlines(&cinfo, (JSAMPARRAY)&tempPtr, 1);
+															currPoint+=cols*3;
+														}
+														jpeg_finish_decompress(&cinfo);
+														jpeg_destroy_decompress(&cinfo);
+														fclose(fp);
+														fb_write_reverse(data, cols,rows);
+														free(data);
+
+														fb_close();
+																
+														close(fditemp);
+														break;
+													}
+                            case 7:
+														textlcd("1","knife+7");
+														//FrameBuffer init
+   														if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
+														{		
+															printf ("FrameBuffer Init Failed\r\n");
+															return 0;
+														}
+					
+														conFD = open ("/dev/tty0", O_RDWR);
+														ioctl(conFD, KDSETMODE, KD_GRAPHICS);
+														close (conFD);
+						
+														//Clear FB.
+														fb_clear();
+	
+														//FileRead
+														error=0;
+														cinfo.err = jpeg_std_error(&jerr);
+														jpeg_create_decompress(&cinfo);
+	
+					
+														fp = fopen("upgrade7.jpg", "rb");
+														jpeg_stdio_src(&cinfo, fp);
+														jpeg_read_header(&cinfo, TRUE); 
+														//printf ("JPG %d by %d by %d, %d\n",
+														//	cinfo.image_width,cinfo.image_height,cinfo.num_components, cinfo.output_scanline);
+														cols = cinfo.image_width;
+														rows = cinfo.image_height;
+																				
+														data = malloc(cols*rows*3);
+														currPoint = 0;
+														jpeg_start_decompress(&cinfo);
+														while(cinfo.output_scanline < cinfo.output_height) 
+														{
+															//printf ("CInfoScanlines:%d\r\n",cinfo.output_scanline);
+															char *tempPtr=&data[currPoint];
+															jpeg_read_scanlines(&cinfo, (JSAMPARRAY)&tempPtr, 1);
+															currPoint+=cols*3;
+														}
+														jpeg_finish_decompress(&cinfo);
+														jpeg_destroy_decompress(&cinfo);
+														fclose(fp);
+														fb_write_reverse(data, cols,rows);
+														free(data);
+
+														fb_close();
+																
+														close(fditemp);
+														break;
+													}
+                            case 8:
+														textlcd("1","knife+8");
+														//FrameBuffer init
+   														if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
+														{		
+															printf ("FrameBuffer Init Failed\r\n");
+															return 0;
+														}
+					
+														conFD = open ("/dev/tty0", O_RDWR);
+														ioctl(conFD, KDSETMODE, KD_GRAPHICS);
+														close (conFD);
+						
+														//Clear FB.
+														fb_clear();
+	
+														//FileRead
+														error=0;
+														cinfo.err = jpeg_std_error(&jerr);
+														jpeg_create_decompress(&cinfo);
+	
+					
+														fp = fopen("upgrade8.jpg", "rb");
+														jpeg_stdio_src(&cinfo, fp);
+														jpeg_read_header(&cinfo, TRUE); 
+														//printf ("JPG %d by %d by %d, %d\n",
+														//	cinfo.image_width,cinfo.image_height,cinfo.num_components, cinfo.output_scanline);
+														cols = cinfo.image_width;
+														rows = cinfo.image_height;
+																				
+														data = malloc(cols*rows*3);
+														currPoint = 0;
+														jpeg_start_decompress(&cinfo);
+														while(cinfo.output_scanline < cinfo.output_height) 
+														{
+															//printf ("CInfoScanlines:%d\r\n",cinfo.output_scanline);
+															char *tempPtr=&data[currPoint];
+															jpeg_read_scanlines(&cinfo, (JSAMPARRAY)&tempPtr, 1);
+															currPoint+=cols*3;
+														}
+														jpeg_finish_decompress(&cinfo);
+														jpeg_destroy_decompress(&cinfo);
+														fclose(fp);
+														fb_write_reverse(data, cols,rows);
+														free(data);
+
+														fb_close();
+																
+														close(fditemp);
+														break;
+													}
 											case 9:
 														textlcd("1","knife+9");
 														//FrameBuffer init
