@@ -220,7 +220,6 @@ int itemup()
 															textlcd("1","Don't be greedy.");
 															printf("더 이상 강화할수 없습니다.\r\n");
 															sleep(2);
-															sleep(1);
 															break;
 														}
 														

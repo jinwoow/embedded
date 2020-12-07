@@ -6,7 +6,8 @@
 
 int power(void)
 {
-	int fdpower;
+	 Temperature();
+	/*int fdpower;
 	char buf[1024];
 	off_t newpos;
 	ssize_t nread;
@@ -32,11 +33,12 @@ int power(void)
 		lseek(fdpower,(off_t)0,SEEK_SET);
 		sprintf(buff,"%d",power);
 	    write(fdpower,buff,sizeof(buff));
-	}
+	    
+	}*/
 	//lseek(fdpower,(off_t)0,SEEK_SET);//power 자리수 buff 자리수 만큼 해주기 malloc
 	//char buff=(char*)malloc(자리수*sizeof(char));
 	//sprintf(buff,"%d",power);
 	//write(fdpower,buff,sizeof(buff));
-	close(fdpower);
+	//close(fdpower);
 	return 1;
 }
