@@ -249,13 +249,7 @@ void* DoSomeThing(void *arg)
 										textlcd("1","input");
 										textlcd("2","item upgrade");
 										sleep(1);
-											//FrameBuffer init
-										int screen_width;
-										int screen_height;
-										int bits_per_pixel;
-										int line_length;
-										int cols = 0, rows = 0;
-										char *data;
+										
 									   //FrameBuffer init
 										if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
 									   {		
@@ -263,7 +257,7 @@ void* DoSomeThing(void *arg)
 									   	return 0;
 									   }
 	 
-									   int conFD = open ("/dev/tty0", O_RDWR);
+									   conFD = open ("/dev/tty0", O_RDWR);
 									   ioctl(conFD, KDSETMODE, KD_GRAPHICS);
 									   close (conFD);
 		
@@ -271,14 +265,13 @@ void* DoSomeThing(void *arg)
 									   fb_clear();
 	
 									   //FileRead
-									   int error=0;
-									   struct jpeg_decompress_struct cinfo;
-									   struct jpeg_error_mgr jerr;
+									   error=0;
+									  
 									   cinfo.err = jpeg_std_error(&jerr);
 									   jpeg_create_decompress(&cinfo);
 	
 	
-									   FILE *fp = fopen("upgrade.jpg", "rb");
+									   fp = fopen("upgrade.jpg", "rb");
 									   jpeg_stdio_src(&cinfo, fp);
 									   jpeg_read_header(&cinfo, TRUE); 
 									   //printf ("JPG %d by %d by %d, %d\n",
@@ -287,7 +280,7 @@ void* DoSomeThing(void *arg)
 									   rows = cinfo.image_height;
 		
 									   data = malloc(cols*rows*3);
-									   int currPoint = 0;
+									   currPoint = 0;
 									   jpeg_start_decompress(&cinfo);
 									   while(cinfo.output_scanline < cinfo.output_height) 
 									   {
