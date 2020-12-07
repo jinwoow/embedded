@@ -50,20 +50,21 @@ int Temperature(){
 	char buff[6];
 	char *buffer;
 	int file;
-	fdpower=open("power.txt",O_RDWR);
-	if(fdpower==-1){
-		printf("fdpower file open error!\n");
-		exit(1);
-	}
-	printf("어플 시작시 전투력 : ");
-	while(nread=read(fdpower,buf,1024)>0){
-		printf("%s\r\n",buf);
-		lseek(fdpower,(off_t)0,SEEK_CUR);
-	}
-	int power=atoi(buf);
+	
 	
 	
 	while(1){
+		fdpower=open("power.txt",O_RDWR);
+		if(fdpower==-1){
+			printf("fdpower file open error!\n");
+			exit(1);
+		}
+		printf("어플 시작시 전투력 : ");
+		while(nread=read(fdpower,buf,1024)>0){
+			printf("%s\r\n",buf);
+			lseek(fdpower,(off_t)0,SEEK_CUR);
+		}
+		int power=atoi(buf);
 		file=spi_init("/dev/spidev1.0"); //dev
 		buffer=(char *)spi_read_lm74(file);
 		close(file);
