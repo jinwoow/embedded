@@ -166,7 +166,24 @@ int Boss()
 			textlcd("2","BOSS ATTACK ");
 		}
 		if(BossHP/300<5){
+			fdpower=open("power.txt",O_RDWR);
+			if(fdpower==-1){
+				printf("file open error!\n");
+				exit(1);
+			}
+			while(nread=read(fdpower,buf,1024)>0){
+				//printf("%s\r\n",buf);
+				lseek(fdpower,(off_t)0,SEEK_CUR);
+			}
+			int power=atoi(buf);
+			lseek(fdpower,(off_t)0,SEEK_SET);
+			power=power+1000;
+			sprintf(buff,"%d",power);
+			write(fdpower,buff,sizeof(buff));
+			close(fdpower);
 			findBuzzerSysPath();
+			textlcd("1","GET BOSS POWER ");
+			textlcd("2","POWER+1000");
 			buzzerEnable(1);
 			setFrequency(musicScale[3]);
 			sleep(2);
@@ -179,4 +196,5 @@ int Boss()
 	ledLibExit();
 	return 0;
 }
+
 
