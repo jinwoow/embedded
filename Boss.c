@@ -80,44 +80,44 @@ int Boss()
 		sleep(1);
 		BossHP=BossHP-power;
 		
-		if(accel[0]>10){
+		if(accel[0]<-20000){
 			printf ("I read Accel %d, %d, %d\r\n",accel[0],accel[1],accel[2]);
-			power=power+100;
+			power=power+10;
 		}
-		if(accel[1]>10){
+		if(accel[1]>500){
 			printf ("I read Accel %d, %d, %d\r\n",accel[0],accel[1],accel[2]);
-			power=power+100;
+			power=power+10;
 		}
-		if(accel[2]>10){
+		if(accel[2]>500){
 			printf ("I read Accel %d, %d, %d\r\n",accel[0],accel[1],accel[2]);
-			power=power+100;
+			power=power+10;
 		}
-		if(magne[0]>10){
+		if(magne[0]>-1000){
 			printf ("I read Magneto %d, %d, %d\r\n",magne[0],magne[1],magne[2]);
-			power=power+100;
+			power=power+10;
 		}
-		if(magne[1]>10){
+		if(magne[1]>1000){
 			printf ("I read Magneto %d, %d, %d\r\n",magne[0],magne[1],magne[2]);
-			power=power+100;
+			power=power+10;
 		}
-		if(magne[1]>10){
+		if(magne[1]>3000){
 			printf ("I read Magneto %d, %d, %d\r\n",magne[0],magne[1],magne[2]);
-			power=power+100;
+			power=power+10;
 		}
 		if(gyro[0]>10)
 		{
 			printf ("I read Gyroscope %d, %d, %d\r\n",gyro[0],gyro[1],gyro[2]);
-			power=power+100;
+			power=power+10;
 		}
 		if(gyro[1]>10)
 		{
 			printf ("I read Gyroscope %d, %d, %d\r\n",gyro[0],gyro[1],gyro[2]);
-			power=power+100;
+			power=power+10;
 		}
 		if(gyro[2]>10)
 		{
 			printf ("I read Gyroscope %d, %d, %d\r\n",gyro[0],gyro[1],gyro[2]);
-			power=power+100;
+			power=power+10;
 		}
 		
 		
