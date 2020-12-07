@@ -651,7 +651,8 @@ void* DoSomeThing(void *arg)
 									   fb_close();
 									   
 										Boss();
-										textlcd("1","Hello");
+										
+										/*textlcd("1","Hello");
 										textlcd("2","Funny Game");
 										//FrameBuffer init
    										if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
@@ -697,7 +698,7 @@ void* DoSomeThing(void *arg)
 										fb_write_reverse(data, cols,rows);
 										free(data);
 
-										fb_close();
+										fb_close();*/
 										break;
 					case KEY_VOLUMEDOWN:
 										textlcd("1","input");
