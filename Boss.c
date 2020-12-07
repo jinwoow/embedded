@@ -16,7 +16,6 @@
 
 int Boss()
 {
-	buzzerInit();
 	int fd = 0;
 	FILE *fp = NULL;
 	ledLibInit();
@@ -125,7 +124,7 @@ int Boss()
 
 		printf("보스 체력: %d\n",BossHP);
 		
-		if(BossHP/300>=0&&BossHP/300<13){
+		if(BossHP/300>=5&&BossHP/300<13){
 			ledOnOff8(0,1);
 			textlcd("2","Hp : 10%");
 		}
@@ -157,7 +156,8 @@ int Boss()
 			ledOnOff1(0,1);
 			textlcd("2","BOSS ATTACK ");
 		}
-		if(BossHP/300<=0){
+		if(BossHP/300<5){
+			buzzerInit();
 			buzzerPlatSong(5);
 			sleep(2);
 			buzzerStopSong();
