@@ -88,7 +88,7 @@ int Temperature(){
 		sprintf(buff,"%d",power);
 	    write(fdpower,buff,sizeof(buff));
 		printf("Current Temp: %lf \n", temp);
-	    if(temp>25){
+	    if(temp>27){
 			sleep(2);
 		}
 		else
