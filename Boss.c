@@ -16,6 +16,7 @@
 
 int Boss()
 {
+	buzzerInit();
 	int fd = 0;
 	FILE *fp = NULL;
 	ledLibInit();
@@ -156,10 +157,14 @@ int Boss()
 			ledOnOff1(0,1);
 			textlcd("2","BOSS ATTACK ");
 		}
+		if(BossHP/300<=0){
+			buzzerPlatSong(5);
+			sleep(2);
 		else
 		;
 	}
 	ledLibExit();
+	buzzerExit();
 	return 0;
 }
 
