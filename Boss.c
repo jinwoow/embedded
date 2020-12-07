@@ -13,6 +13,13 @@
 #define ACCELPATH "/sys/class/misc/FreescaleAccelerometer/"
 #define MAGNEPATH "/sys/class/misc/FreescaleMagnetometer/"
 #define GYROPATH "/sys/class/misc/FreescaleGyroscope/"
+#include "buzzer.h"
+#define MAX_SCALE_STEP 8
+
+int musicScale[MAX_SCALE_STEP] =
+{
+	262,294,330,349,392,440,494,523
+};
 
 
 int Boss()
@@ -159,17 +166,16 @@ int Boss()
 			textlcd("2","BOSS ATTACK ");
 		}
 		if(BossHP/300<5){
-			buzzerInit();
-			buzzerPlatSong(5);
-			sleep(2);
-			buzzerStopSong();
-			//buzzerEnable(0);
+			findBuzzerSysPath();
+			buzzerEnable(1);
+			setFrequency(musicScale[3]);
+			usleep(1000*100);
+			buzzerEnable(0);
 		}
 		else
 		;
 	}
 
-	buzzerExit();
 	ledLibExit();
 	return 0;
 }
