@@ -160,6 +160,7 @@ int Boss()
 		if(BossHP/300<=0){
 			buzzerPlatSong(5);
 			sleep(2);
+		}
 		else
 		;
 	}
