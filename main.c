@@ -194,7 +194,9 @@ void* DoSomeThing(void *arg)
 					case KEY_SEARCH: printf("Search key:"); break;
 					case KEY_BACK:
 									break;
-					case KEY_MENU: printf("Menu key:"); break;
+					case KEY_MENU:
+						Boss();
+						break;
 					case KEY_VOLUMEDOWN:
 										textlcd("1","input");
 										textlcd("2","item upgrade");
