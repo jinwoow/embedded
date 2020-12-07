@@ -26,6 +26,7 @@ int Boss()
 	int cnt=0;
 	char buff[6];
 	int BossHP=30000;
+	
 	//Accelerometer
 	fd = open (ACCELPATH "enable",O_WRONLY);
 	dprintf (fd,"1");
@@ -35,7 +36,6 @@ int Boss()
 	fscanf(fp,"%d, %d, %d",&accel[0],&accel[1],&accel[2]);
 	printf ("I read Accel %d, %d, %d\r\n",accel[0],accel[1],accel[2]);
 	fclose(fp);
-
 
 	//Magnet
 	fd = open (MAGNEPATH "enable",O_WRONLY);
@@ -56,6 +56,7 @@ int Boss()
 	fscanf(fp,"%d, %d, %d",&gyro[0],&gyro[1],&gyro[2]);
 	printf ("I read Gyroscope %d, %d, %d\r\n",gyro[0],gyro[1],gyro[2]);
 	fclose(fp);
+	
 	//보스 피 에서 - 내 전투력을 빼면 된다
 	//BossHP=30000;
 	ledOnOff0(0,1);
@@ -78,6 +79,48 @@ int Boss()
 	while(BossHP>0){
 		sleep(1);
 		BossHP=BossHP-power;
+		
+		if(accel[0]>10){
+			printf ("I read Accel %d, %d, %d\r\n",accel[0],accel[1],accel[2]);
+			power=power+100;
+		}
+		if(accel[1]>10){
+			printf ("I read Accel %d, %d, %d\r\n",accel[0],accel[1],accel[2]);
+			power=power+100;
+		}
+		if(accel[2]>10){
+			printf ("I read Accel %d, %d, %d\r\n",accel[0],accel[1],accel[2]);
+			power=power+100;
+		}
+		if(magne[0]>10){
+			printf ("I read Magneto %d, %d, %d\r\n",magne[0],magne[1],magne[2]);
+			power=power+100;
+		}
+		if(magne[1]>10){
+			printf ("I read Magneto %d, %d, %d\r\n",magne[0],magne[1],magne[2]);
+			power=power+100;
+		}
+		if(magne[1]>10){
+			printf ("I read Magneto %d, %d, %d\r\n",magne[0],magne[1],magne[2]);
+			power=power+100;
+		}
+		if(gyro[0]>10)
+		{
+			printf ("I read Gyroscope %d, %d, %d\r\n",gyro[0],gyro[1],gyro[2]);
+			power=power+100;
+		}
+		if(gyro[1]>10)
+		{
+			printf ("I read Gyroscope %d, %d, %d\r\n",gyro[0],gyro[1],gyro[2]);
+			power=power+100;
+		}
+		if(gyro[2]>10)
+		{
+			printf ("I read Gyroscope %d, %d, %d\r\n",gyro[0],gyro[1],gyro[2]);
+			power=power+100;
+		}
+		
+		
 
 		printf("보스 체력: %d\n",BossHP);
 		
