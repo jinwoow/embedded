@@ -161,6 +161,7 @@ int Boss()
 			buzzerPlatSong(5);
 			sleep(2);
 			buzzerStopSong();
+			buzzerExit();
 		}
 		else
 		;
