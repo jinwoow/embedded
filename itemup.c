@@ -77,6 +77,7 @@ int itemup()
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
 															sleep(2);
+colarled("0","0","0");
 															break;
 														}
 														else{
@@ -97,6 +98,7 @@ int itemup()
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
 															sleep(2);
+colarled("0","0","0");
 														break;
 														}
 														else{
@@ -117,6 +119,7 @@ int itemup()
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
 															sleep(2);
+colarled("0","0","0");
 															break;
 														}
 														else{
@@ -137,6 +140,7 @@ int itemup()
 															sprintf(buff,"%d",power);
 	 												       write(fdpower,buff,sizeof(buff));
 	 												       sleep(2);
+colarled("0","0","0");
 															break;
 														}
 														else{
@@ -157,6 +161,7 @@ int itemup()
 															sprintf(buff,"%d",power);
 	   												     write(fdpower,buff,sizeof(buff));
 	   												     sleep(2);
+colarled("0","0","0");
 															break;
 														}
 														else{
@@ -177,6 +182,7 @@ int itemup()
 															sprintf(buff,"%d",power);
 	  												      write(fdpower,buff,sizeof(buff));
 	  												      sleep(2);
+colarled("0","0","0");
 															break;
 														}
 														else{
@@ -197,6 +203,7 @@ int itemup()
 															sprintf(buff,"%d",power);
 	     												   write(fdpower,buff,sizeof(buff));
 	     												   sleep(2);
+colarled("0","0","0");
 															break;
 														}
 														else{
@@ -217,6 +224,7 @@ int itemup()
 															sprintf(buff,"%d",power);
 	    												    write(fdpower,buff,sizeof(buff));
 	    												    sleep(2);
+colarled("0","0","0");
 															break;
 														}
 														else{
