@@ -132,7 +132,7 @@ void* DoSomeThing(void *arg)
 										printf("%d\r\n",upgrade);	
 										
 										switch(upgrade){
-                            case 1:
+										case 1:
 														textlcd("1","knife+1");
 														//FrameBuffer init
    														if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
@@ -182,7 +182,6 @@ void* DoSomeThing(void *arg)
 																
 														close(fditemp);
 														break;
-													}
                             case 2:
 														textlcd("1","knife+2");
 														//FrameBuffer init
@@ -233,7 +232,7 @@ void* DoSomeThing(void *arg)
 																
 														close(fditemp);
 														break;
-													}
+												
                             case 3:
 														textlcd("1","knife+3");
 														//FrameBuffer init
@@ -284,7 +283,7 @@ void* DoSomeThing(void *arg)
 																
 														close(fditemp);
 														break;
-													}
+												
                             case 4:
 														textlcd("1","knife+4");
 														//FrameBuffer init
@@ -335,7 +334,7 @@ void* DoSomeThing(void *arg)
 																
 														close(fditemp);
 														break;
-													}
+												
                             case 5:
 														textlcd("1","knife+5");
 														//FrameBuffer init
@@ -386,7 +385,7 @@ void* DoSomeThing(void *arg)
 																
 														close(fditemp);
 														break;
-													}
+													
                         case 6:
 														textlcd("1","knife+6");
 														//FrameBuffer init
@@ -437,7 +436,7 @@ void* DoSomeThing(void *arg)
 																
 														close(fditemp);
 														break;
-													}
+													
                             case 7:
 														textlcd("1","knife+7");
 														//FrameBuffer init
@@ -488,7 +487,7 @@ void* DoSomeThing(void *arg)
 																
 														close(fditemp);
 														break;
-													}
+													
                             case 8:
 														textlcd("1","knife+8");
 														//FrameBuffer init
@@ -539,7 +538,7 @@ void* DoSomeThing(void *arg)
 																
 														close(fditemp);
 														break;
-													}
+													
 											case 9:
 														textlcd("1","knife+9");
 														//FrameBuffer init
