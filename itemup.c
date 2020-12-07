@@ -252,7 +252,7 @@ int itemup()
 														case 9:
 															textlcd("1","Don't be greedy.");
 															printf("더 이상 강화할수 없습니다.\r\n");
-															colarled("50","0","0")
+															colarled("50","0","0");
 															sleep(2);
 															colarled("0","0","0");
 															break;
