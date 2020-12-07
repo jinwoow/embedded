@@ -691,7 +691,7 @@ void* DoSomeThing(void *arg)
 									   }
 										jpeg_finish_decompress(&cinfo);
 									   jpeg_destroy_decompress(&cinfo);
-									   fclose(fp);
+									   fclose(fp); 
 									   fb_write_reverse(data, cols,rows);
 									   free(data);
 
