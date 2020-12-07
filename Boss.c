@@ -160,11 +160,12 @@ int Boss()
 		if(BossHP/300<=0){
 			buzzerPlatSong(5);
 			sleep(2);
-			buzzerExit();
+			buzzerStopSong();
 		}
 		else
 		;
 	}
+	buzzerExit();
 	ledLibExit();
 	return 0;
 }
