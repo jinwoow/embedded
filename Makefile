@@ -5,18 +5,21 @@ all: main.elf
 main.elf:main.o libMyperi.a
 	mv libMyperi.a ../
 	$(CC) main.o -o main.elf -L../ -L../libjpeg -l mylib -l jpeg -l Myperi -lpthread
-	scp main.elf ecube@192.168.35.60:/home/ecube
+
 	
 main.o:main.c button.h
 	$(CC) -c -o main.o main.c
 
-libMyperi.a:item.o power.o itemp.o itemup.o button.o led.o buzzer.o textlcd.o fnd.o colorled.o Temperature.o accelMagGyro.o
-	arm-linux-gnueabi-ar rc libMyperi.a item.o power.o itemp.o itemup.o button.o led.o buzzer.o textlcd.o fnd.o colorled.o Temperature.o accelMagGyro.o
+libMyperi.a:item.o power.o itemp.o itemup.o Boss.o button.o led.o buzzer.o textlcd.o fnd.o colorled.o Temperature.o accelMagGyro.o
+	arm-linux-gnueabi-ar rc libMyperi.a item.o power.o itemp.o itemup.o button.o led.o buzzer.o textlcd.o fnd.o colorled.o Temperature.o accelMagGyro.o Boss.o
 
-item.o:readitem.c
+item.o:readitem.c 
 	$(CC) -c readitem.c -o item.o
 
-power.o:readpower.c fnd.o
+Boss.o:Boss.c accelMagGyro.o Temperature.o led.o textlcd.o buzzer.o
+	$(CC) -c Boss.c -o Boss.o
+	
+power.o:readpower.c fnd.o Temperature.o
 	$(CC) -c readpower.c -o power.o 
 
 itemp.o:readitemp.c
@@ -43,7 +46,7 @@ fnd.o:fnd.c fnddrv.h
 colorled.o:colarled.c
 	$(CC) -c colarled.c -o colorled.o
 
-Temperature.o:Temperature.c
+Temperature.o:Temperature.c power.o
 	$(CC) -c Temperature.c -o Temperature.o
 
 accelMagGyro.o:accelMagGyro.h accelMagGyro.c

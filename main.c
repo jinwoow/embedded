@@ -603,7 +603,7 @@ void* DoSomeThing(void *arg)
 									break;
 					case KEY_MENU:
 					
-										if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
+										/*if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
 									   {		
 									   	printf ("FrameBuffer Init Failed\r\n");
 									   	return 0;
@@ -648,7 +648,7 @@ void* DoSomeThing(void *arg)
 									   fb_write_reverse(data, cols,rows);
 									   free(data);
 
-									   fb_close();
+									   fb_close();*/
 									   
 										Boss();
 										
