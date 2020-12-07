@@ -169,7 +169,7 @@ int Boss()
 			findBuzzerSysPath();
 			buzzerEnable(1);
 			setFrequency(musicScale[3]);
-			usleep(1000*100);
+			sleep(2);
 			buzzerEnable(0);
 		}
 		else

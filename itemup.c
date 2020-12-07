@@ -69,7 +69,7 @@ int itemup()
 														if(a>=0&&a<=9){
 															textlcd("1","SUCCESE !! power+100");
 															itemplus++;
-                              colarled("0","50","0");
+															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
 															textlcd("2","strengthen : %d",itemplus);
@@ -77,12 +77,14 @@ int itemup()
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
 															sleep(2);
-colarled("0","0","0");
+															colarled("0","0","0");
 															break;
 														}
 														else{
 															textlcd("1","fail");
+															colarled("50","0","0");
 															sleep(2);
+															colarled("0","0","0");
 															break;
 														}
 		
@@ -90,7 +92,7 @@ colarled("0","0","0");
 														if(a>=0&&a<=8){
 															textlcd("1","SUCCESE !! power+200");
 															itemplus++;
-                              colarled("0","50","0");
+															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
 															textlcd("2","strengthen : %d",itemplus);
@@ -98,12 +100,14 @@ colarled("0","0","0");
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
 															sleep(2);
-colarled("0","0","0");
+															colarled("0","0","0");
 														break;
 														}
 														else{
+															colarled("50","0","0");
 															textlcd("1","fail");
 															sleep(2);
+															colarled("0","0","0");
 															break;
 														}
 		
@@ -111,7 +115,7 @@ colarled("0","0","0");
 														if(a>=0&&a<=7){
 															textlcd("1","SUCCESE !! power+300");
 															itemplus++;
-                              colarled("0","50","0");
+															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
 															textlcd("2","strengthen : %d",itemplus);
@@ -119,12 +123,14 @@ colarled("0","0","0");
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
 															sleep(2);
-colarled("0","0","0");
+															colarled("0","0","0");
 															break;
 														}
 														else{
+															colarled("50","0","0");
 															textlcd("1","fail");
 															sleep(2);
+															colarled("0","0","0");
 															break;
 														}
 		
@@ -132,20 +138,22 @@ colarled("0","0","0");
 														if(a>=0&&a<=6){
 															textlcd("1","SUCCESE !! power+400");
 															itemplus++;
-                              colarled("0","50","0");
+															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
 															textlcd("2","strengthen : %d",itemplus);
 															power=power+400;
 															sprintf(buff,"%d",power);
-	 												       write(fdpower,buff,sizeof(buff));
-	 												       sleep(2);
-colarled("0","0","0");
+															write(fdpower,buff,sizeof(buff));
+															sleep(2);
+															colarled("0","0","0");
 															break;
 														}
 														else{
+															colarled("50","0","0");
 															textlcd("1","fail");
 															sleep(2);
+															colarled("0","0","0");
 															break;
 														}
 		
@@ -153,20 +161,22 @@ colarled("0","0","0");
 														if(a>=0&&a<=5){
 															textlcd("1","SUCCESE !! power+500");
 															itemplus++;
-                              colarled("0","50","0");
+															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
 															textlcd("2","strengthen : %d",itemplus);
 															power=power+500;
 															sprintf(buff,"%d",power);
-	   												     write(fdpower,buff,sizeof(buff));
-	   												     sleep(2);
-colarled("0","0","0");
+															write(fdpower,buff,sizeof(buff));
+															sleep(2);
+															colarled("0","0","0");
 															break;
 														}
 														else{
+															colarled("50","0","0");
 															textlcd("1","fail");
 															sleep(2);
+															colarled("0","0","0");
 															break;
 														}
 		
@@ -174,20 +184,22 @@ colarled("0","0","0");
 														if(a>=0&&a<=4){
 															textlcd("1","SUCCESE !! power+600");
 															itemplus++;
-                              colarled("0","50","0");
+															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
 															textlcd("2","strengthen : %d",itemplus);
 															power=power+600;
 															sprintf(buff,"%d",power);
-	  												      write(fdpower,buff,sizeof(buff));
-	  												      sleep(2);
-colarled("0","0","0");
+															write(fdpower,buff,sizeof(buff));
+															sleep(2);
+															colarled("0","0","0");
 															break;
 														}
 														else{
+															colarled("50","0","0");
 															textlcd("1","fail");
 															sleep(2);
+															colarled("0","0","0");
 															break;
 														}
 		
@@ -195,20 +207,22 @@ colarled("0","0","0");
 														if(a>=0&&a<=3){
 															textlcd("1","SUCCESE !! power+700");
 															itemplus++;
-                              colarled("0","50","0");
+															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
 															textlcd("2","strengthen : %d",itemplus);
 															power=power+700;
 															sprintf(buff,"%d",power);
-	     												   write(fdpower,buff,sizeof(buff));
-	     												   sleep(2);
-colarled("0","0","0");
+															write(fdpower,buff,sizeof(buff));
+															sleep(2);
+															colarled("0","0","0");
 															break;
 														}
 														else{
+															colarled("50","0","0");
 															textlcd("1","fail");
 															sleep(2);
+															colarled("0","0","0");
 															break;
 														}
 		
@@ -216,7 +230,7 @@ colarled("0","0","0");
 														if(a>=0&&a<=2){
 															textlcd("1","SUCCESE !! power+800");
 															itemplus++;
-                              colarled("0","50","0");
+															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
 															textlcd("2","strengthen : %d",itemplus);
@@ -224,19 +238,23 @@ colarled("0","0","0");
 															sprintf(buff,"%d",power);
 	    												    write(fdpower,buff,sizeof(buff));
 	    												    sleep(2);
-colarled("0","0","0");
+															colarled("0","0","0");
 															break;
 														}
 														else{
+															colarled("50","0","0");
 															textlcd("1","fail");
 															sleep(2);
+															colarled("0","0","0");
 															break;
 														}
 		
 														case 9:
 															textlcd("1","Don't be greedy.");
 															printf("더 이상 강화할수 없습니다.\r\n");
+															colarled("50","0","0")
 															sleep(2);
+															colarled("0","0","0");
 															break;
 														}
 														
