@@ -213,9 +213,9 @@ int Boss()
 		}
 		if(BossHP/300<5){
 			buzzerInit();
-			//buzzerPlatSong(5);
-			//sleep(2);
-			//buzzerStopSong();
+			buzzerPlatSong(5);
+			sleep(2);
+			buzzerStopSong();
 			//buzzerEnable(0);
 		}
 		else
