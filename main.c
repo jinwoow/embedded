@@ -262,7 +262,7 @@ void* DoSomeThing(void *arg)
 									   	printf ("FrameBuffer Init Failed\r\n");
 									   	return 0;
 									   }
-	
+	 
 									   int conFD = open ("/dev/tty0", O_RDWR);
 									   ioctl(conFD, KDSETMODE, KD_GRAPHICS);
 									   close (conFD);

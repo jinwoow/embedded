@@ -15,7 +15,7 @@ int ledOnOff(int ledNum, int onOff)
 
 int ledOnOff0(int ledNum, int onOff)
 {
-	int i=1;
+	int i=0;
 	i = i<<ledNum;
 	ledValue=ledValue&(~i);
 	if(onOff !=0)ledValue|=i;
