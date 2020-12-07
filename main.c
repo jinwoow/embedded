@@ -699,6 +699,16 @@ void* DoSomeThing(void *arg)
 									   
 									   sleep(1);
 									   
+									   if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
+									   {		
+									   	printf ("FrameBuffer Init Failed\r\n");
+									   	return 0;
+									   }
+	
+									   conFD = open ("/dev/tty0", O_RDWR);
+									   ioctl(conFD, KDSETMODE, KD_GRAPHICS);
+									   close (conFD);
+									   
 									   //Clear FB.
 									   fb_clear();
 	
@@ -736,6 +746,16 @@ void* DoSomeThing(void *arg)
 									   
 									   sleep(1);
 									   
+									   if ( fb_init(&screen_width, &screen_height, &bits_per_pixel, &line_length) < 0 )
+									   {		
+									   	printf ("FrameBuffer Init Failed\r\n");
+									   	return 0;
+									   }
+	
+									   conFD = open ("/dev/tty0", O_RDWR);
+									   ioctl(conFD, KDSETMODE, KD_GRAPHICS);
+									   close (conFD);
+									   
 									   //Clear FB.
 									   fb_clear();
 	
@@ -744,7 +764,7 @@ void* DoSomeThing(void *arg)
 									   cinfo.err = jpeg_std_error(&jerr);
 									   jpeg_create_decompress(&cinfo);
 	
-									Boss();
+										Boss();
 										
 										textlcd("1","Hello");
 										textlcd("2","Funny Game");
