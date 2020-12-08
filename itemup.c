@@ -72,7 +72,7 @@ int itemup()
 															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
-															textlcd("2","strengthen : %d",itemplus);
+															textlcd("2","strengthen : +100",itemplus);
 															power=power+100;
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
@@ -95,7 +95,7 @@ int itemup()
 															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
-															textlcd("2","strengthen : %d",itemplus);
+															textlcd("2","strengthen : +200",itemplus);
 															power=power+200;
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
@@ -118,7 +118,7 @@ int itemup()
 															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
-															textlcd("2","strengthen : %d",itemplus);
+															textlcd("2","strengthen : +300",itemplus);
 															power=power+300;
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
@@ -141,7 +141,7 @@ int itemup()
 															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
-															textlcd("2","strengthen : %d",itemplus);
+															textlcd("2","strengthen : +400",itemplus);
 															power=power+400;
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
@@ -164,7 +164,7 @@ int itemup()
 															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
-															textlcd("2","strengthen : %d",itemplus);
+															textlcd("2","strengthen : +500",itemplus);
 															power=power+500;
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
@@ -187,7 +187,7 @@ int itemup()
 															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
-															textlcd("2","strengthen : %d",itemplus);
+															textlcd("2","strengthen : +600",itemplus);
 															power=power+600;
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
@@ -210,7 +210,7 @@ int itemup()
 															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
-															textlcd("2","strengthen : %d",itemplus);
+															textlcd("2","strengthen : +700",itemplus);
 															power=power+700;
 															sprintf(buff,"%d",power);
 															write(fdpower,buff,sizeof(buff));
@@ -233,7 +233,7 @@ int itemup()
 															colarled("0","50","0");
 															sprintf(buff,"%d",itemplus);
 															write(fditemup,buff,sizeof(buff));
-															textlcd("2","strengthen : %d",itemplus);
+															textlcd("2","strengthen : +800",itemplus);
 															power=power+800;
 															sprintf(buff,"%d",power);
 	    												    write(fdpower,buff,sizeof(buff));
